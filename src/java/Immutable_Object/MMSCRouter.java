@@ -7,9 +7,11 @@ import java.util.Map;
 /**
  * Created by jamesmsw on 17-1-17.
  */
+
 public final class MMSCRouter {
     //用volatile修饰,保证多线程环境下该变量的可见性
     private static volatile  MMSCRouter instance=new MMSCRouter();
+
     //维护手机号码前缀到彩信中心之间的映射关系
     private final Map<String,MMSCInfo> routeMap;
 

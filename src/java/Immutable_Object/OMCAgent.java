@@ -10,6 +10,7 @@ public class OMCAgent extends Thread {
         String updatedTableName=null;
         while (true){
             if (isTableModificationMsg){
+
                 if ("MMSCInfo".equals(updatedTableName)){
                     MMSCRouter.setInstance(new MMSCRouter());
                 }
