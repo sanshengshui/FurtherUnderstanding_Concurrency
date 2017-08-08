@@ -6,19 +6,26 @@
 # Java工具
 - jps
 ## 描述
-```txt
+```text
     jps位于jdk的bin目录下，其作用是显示当前系统的java进程情况，及其id号。 jps相当于Solaris进程工具ps。不象”pgrep java”
 或”ps -ef grep java”，jps并不使用应用程序名来查找JVM实例。因此，它查找所有的Java应用程序，包括即使没有使用java执行体的
 那种（例如，定制的启动 器）。另外，jps仅查找当前用户的Java进程，而不是当前系统中的所有进程。
 ```
 ## 位置
-```
+```text
+    我们知道，很多Java命令都在jdk的JAVA_HOME/bin/目录下面，jps也不例外，他就在bin目录下，所以，他是java自带的一个命令。
 ```
 ## 功能
-```
+```text
+    jps(Java Virtual Machine Process Status Tool)是JDK 1.5提供的一个显示当前所有java进程pid的命令，简单实用，非常适合在
+linux/unix平台上简单察看当前java进程的一些简单情况。
 ```
 ## 原理
-```
+```text
+    jdk中的jps命令可以显示当前运行的java进程以及相关参数，它的实现机制如下：
+    java程序在启动以后，会在java.io.tmpdir指定的目录下，就是临时文件夹里，生成一个类似于hsperfdata_User的文件夹，这个文件
+夹里（在Linux中为/tmp/hsperfdata_{userName}/），有几个文件，名字就是java进程的pid，因此列出当前运行的java进程，只是把这个
+目录里的文件名列一下而已。 至于系统的参数什么，就可以解析这几个文件获得。
 ```
 ## 使用
 ```
