@@ -30,7 +30,8 @@ linux/unix平台上简单察看当前java进程的一些简单情况。
 ## 使用
 ```text
     -q 只显示pid，不显示class名称,jar文件名和传递给main 方法的参数
-    -m 输出传递给main 方法的参数，在嵌入式jvm上可能是null， 在这里，在启动main方法的时候，我给String[] args传递两个参数。hollis,chuang,执行jsp -m:
+    -m 输出传递给main 方法的参数，在嵌入式jvm上可能是null， 在这里，在启动main方法的时候，我给String[] args传递两个参数。
+hollis,chuang,执行jsp -m:
     -l 输出应用程序main class的完整package名 或者 应用程序的jar文件完整路径名
     -v 输出传递给JVM的参数 在这里，在启动main方法的时候，我给jvm传递一个参数：-Dfile.encoding=UTF-8,执行jps -v：
     PS:jps命令有个地方很不好，似乎只能显示当前用户的java进程，要显示其他用户的还是只能用unix/linux的ps命令。
@@ -59,6 +60,13 @@ jconsole、jvisualvm可能无法监控该进程，其他java自带工具也可�
     2.如何给JVM传递参数 在eclipse中，鼠标右键->Run As->Run COnfiguations->Arguments->在VM arguments中写下要传的参数值
 （一般以-D开头）
 ```
+
+- Jstack
+## 描述
+```
+    jstack是java虚拟机自带的一种堆栈跟踪工具。
+```
+
 ```
 多线程共享变量的情况下，为了保证数据的一致性，往往需要对这些变量的访问进行加锁，
 而锁的本身又会带来一些问题和开销。  
