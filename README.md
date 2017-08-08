@@ -1,8 +1,9 @@
-参考书籍  　　
-Java 多线程编程实战指南(设计模式篇)  　　
-Java Concurrency in Practice
-Java 7 Concurrency Cookbook  
+# 参考书籍  　　
+- Java多线程编程实战指南(设计模式篇)  　　
+- Java Concurrency in Practice
+- Java 7 Concurrency Cookbook  
 
+```
 多线程共享变量的情况下，为了保证数据的一致性，往往需要对这些变量的访问进行加锁，
 而锁的本身又会带来一些问题和开销。  
 
@@ -97,4 +98,5 @@ AlarmAgent创建了一个专门的线程用于其与告警服务器建立网路�
 
 若AlarmAgent与告警服务器的连接未建立(或者连接中断)，
 sendAlarm方法的执行线程应该暂挂直到连接建立完毕(或者恢复)
+```
 
