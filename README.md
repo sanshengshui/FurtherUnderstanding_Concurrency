@@ -103,6 +103,7 @@ synchronized保护起来的代码段为临界区。当一个线程申请进入�
     parking to wait for <地址> 目标
     
 ```
+<p align="center"><img src ="picture/Monitor.PNG" alt="horizon" /></p>
 
 ```
 多线程共享变量的情况下，为了保证数据的一致性，往往需要对这些变量的访问进行加锁，
