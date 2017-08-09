@@ -61,7 +61,6 @@ jconsole、jvisualvm可能无法监控该进程，其他java自带工具也可�
 - Jstack
 ```
 描述
-
     jstack是java虚拟机自带的一种堆栈跟踪工具。
 
  功能
@@ -72,6 +71,37 @@ core文件，jstack工具可以用来获得core文件的java stack和native stac
 发生问题。另外，jstack工具还可以附属到正在运行的java程序中，看到当时运行的java程序的java stack和native stack的信息,
 如果现在运行的java程序呈现hung的状态，jstack是非常有用的。
     So,jstack命令主要用来查看Java线程的调用堆栈的，可以用来分析线程问题（如死锁）。
+线程状态
+    想要通过jstack命令来分析线程的情况的话，首先要知道线程都有哪些状态，下面这些状态是我们使用jstack命令查看线程堆栈信息
+时可能会看到的线程的几种状态：
+    NEW,未启动的。不会出现在Dump中。
+    RUNNABLE,在虚拟机内执行的。
+    BLOCKED,受阻塞并等待监视器锁。
+    WATING,无限期等待另一个线程执行特定操作。
+   TIMED_WATING,有时限的等待另一个线程的特定操作。
+   TERMINATED,已退出的。
+Monitor
+    在多线程的 JAVA程序中，实现线程之间的同步，就要说说 Monitor。 Monitor是 Java中用以实现线程之间的互斥与协作的主要手段，
+它可以看成是对象或者 Class的锁。每一个对象都有，也仅有一个 monitor。图1，描述了线程和 Monitor之间关系，以 及线程
+的状态转换图：
+    进入区(Entrt Set):
+    表示线程通过synchronized要求获取对象的锁。如果对象未被锁住,则迚入拥有者;否则则在进入区等待。一旦对象锁被其他线程释放,
+立即参与竞争。
+    拥有者(The Owner):
+    表示某一线程成功竞争到对象锁。
+    等待区(Wait Set):
+    表示线程通过对象的wait方法,释放对象的锁,并在等待区等待被唤醒。
+    从下图可以看出，一个 Monitor在某个时刻，只能被一个线程拥有，该线程就是 “Active Thread”，而其它线程都是 
+“Waiting Thread”，分别在两个队列 “ Entry Set”和 “Wait Set”里面等候。在 “Entry Set”中等待的线程状态是 “Waiting 
+for monitor entry”，而在 “Wait Set”中等待的线程状态是 “in Object.wait()”。 先看 “Entry Set”里面的线程。我们称被 
+synchronized保护起来的代码段为临界区。当一个线程申请进入临界区时，它就进入了 “Entry Set”队列。
+调用修饰
+    表示线程在方法调用时,额外的重要的操作。线程Dump分析的重要信息。修饰上方的方法调用。
+    locked <地址> 目标：使用synchronized申请对象锁成功,监视器的拥有者。
+    waiting to lock <地址> 目标：使用synchronized申请对象锁未成功,在迚入区等待。
+    waiting on <地址> 目标：使用synchronized申请对象锁成功后,释放锁幵在等待区等待。
+    parking to wait for <地址> 目标
+    
 ```
 
 ```
