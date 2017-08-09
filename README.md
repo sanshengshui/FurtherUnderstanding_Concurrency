@@ -101,6 +101,25 @@ synchronized保护起来的代码段为临界区。当一个线程申请进入�
     waiting to lock <地址> 目标：使用synchronized申请对象锁未成功,在迚入区等待。
     waiting on <地址> 目标：使用synchronized申请对象锁成功后,释放锁幵在等待区等待。
     parking to wait for <地址> 目标
+线程Dump的分析
+    原则
+    结合代码阅读的推理。需要线程Dump和源码的相互推导和印证。
+    造成Bug的根源往往丌会在调用栈上直接体现,一定格外注意线程当前调用之前的所有调用。
+入手点
+    进入区等待
+    线程状态BLOCKED,线程动作wait on monitor entry,调用修饰waiting to lock总是一起出现。表示在代码级别已经存在冲突的调用。
+必然有问题的代码,需要尽可能减少其发生。
+    同步块阻塞
+    一个线程锁住某对象,大量其他线程在该对象上等待。
+    持续运行的IO IO操作是可以以RUNNABLE状态达成阻塞。例如:数据库死锁、网络读写。 格外注意对IO线程的真实状态的分析。
+一般来说,被捕捉到RUNNABLE的IO调用,都是有问题的。
+    以下堆栈显示：
+     线程状态为RUNNABLE。 调用栈在SocketInputStream或SocketImpl上,socketRead0等方法。 调用栈包含了jdbc相关的包。很可能
+发生了数据库死锁
+    分线程调度的休眠
+正常的线程池等待
+可疑的线程等待
+    
     
 ```
 <p align="center"><img src ="picture/Monitor.PNG" alt="horizon" /></p>
