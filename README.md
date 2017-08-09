@@ -5,30 +5,29 @@
 
 # Java工具
 - jps
-## 描述
-```text
+
+```
+描述
     jps位于jdk的bin目录下，其作用是显示当前系统的java进程情况，及其id号。 jps相当于Solaris进程工具ps。不象”pgrep java”
 或”ps -ef grep java”，jps并不使用应用程序名来查找JVM实例。因此，它查找所有的Java应用程序，包括即使没有使用java执行体的
 那种（例如，定制的启动 器）。另外，jps仅查找当前用户的Java进程，而不是当前系统中的所有进程。
-```
-## 位置
-```text
+
+位置
+
     我们知道，很多Java命令都在jdk的JAVA_HOME/bin/目录下面，jps也不例外，他就在bin目录下，所以，他是java自带的一个命令。
-```
-## 功能
-```text
+
+功能
+
     jps(Java Virtual Machine Process Status Tool)是JDK 1.5提供的一个显示当前所有java进程pid的命令，简单实用，非常适合在
 linux/unix平台上简单察看当前java进程的一些简单情况。
-```
-## 原理
-```text
+ 原理
+
     jdk中的jps命令可以显示当前运行的java进程以及相关参数，它的实现机制如下：
     java程序在启动以后，会在java.io.tmpdir指定的目录下，就是临时文件夹里，生成一个类似于hsperfdata_User的文件夹，这个文件
 夹里（在Linux中为/tmp/hsperfdata_{userName}/），有几个文件，名字就是java进程的pid，因此列出当前运行的java进程，只是把这个
 目录里的文件名列一下而已。 至于系统的参数什么，就可以解析这几个文件获得。
-```
-## 使用
-```text
+
+ 使用
     -q 只显示pid，不显示class名称,jar文件名和传递给main 方法的参数
     -m 输出传递给main 方法的参数，在嵌入式jvm上可能是null， 在这里，在启动main方法的时候，我给String[] args传递两个参数。
 hollis,chuang,执行jsp -m:
@@ -38,11 +37,9 @@ hollis,chuang,执行jsp -m:
     jps是我最常用的java命令。使用jps可以查看当前有哪些Java进程处于运行状态。如果我运行了一个web应用（使用tomcat、jboss、
 jetty等启动）的时候，我就可以使用jps查看启动情况。有的时候我想知道这个应用的日志会输出到哪里，或者启动的时候使用了哪些
 javaagent，那么我可以使用jps -v 查看进程的jvm参数情况。
-```
 <p align="center"><img src ="picture/jps.PNG" alt="JPS logo" /></p>
 
-## JPS失效处理
-```text
+ JPS失效处理
     现象： 用ps -ef|grep java能看到启动的java进程，但是用jps查看却不存在该进程的id。待会儿解释过之后就能知道在该情况下，
 jconsole、jvisualvm可能无法监控该进程，其他java自带工具也可能无法使用分析： jps、jconsole、jvisualvm等工具的数据来源就是
 这个文件（/tmp/hsperfdata_userName/pid)。所以当该文件不存在或是无法读取时就会出现jps无法查看该进程号，jconsole无法监控等问题
@@ -62,9 +59,19 @@ jconsole、jvisualvm可能无法监控该进程，其他java自带工具也可�
 ```
 
 - Jstack
-## 描述
 ```
+描述
+
     jstack是java虚拟机自带的一种堆栈跟踪工具。
+
+ 功能
+    jstack用于生成java虚拟机当前时刻的线程快照。线程快照是当前java虚拟机内每一条线程正在执行的方法堆栈的集合，生成线程快照
+的主要目的是定位线程出现长时间停顿的原因，如线程间死锁、死循环、请求外部资源导致的长时间等待等。 线程出现停顿的时候通过
+jstack来查看各个线程的调用堆栈，就可以知道没有响应的线程到底在后台做什么事情，或者等待什么资源。 如果java程序崩溃生成
+core文件，jstack工具可以用来获得core文件的java stack和native stack的信息，从而可以轻松地知道java程序是如何崩溃和在程序何处
+发生问题。另外，jstack工具还可以附属到正在运行的java程序中，看到当时运行的java程序的java stack和native stack的信息,
+如果现在运行的java程序呈现hung的状态，jstack是非常有用的。
+    So,jstack命令主要用来查看Java线程的调用堆栈的，可以用来分析线程问题（如死锁）。
 ```
 
 ```
