@@ -131,7 +131,22 @@ in Object.wait()      ：注意非线程池等待
     -m 打印java和native c/c++框架的所有栈信息. 
     -h | -help打印帮助信息 
     pid 需要被打印配置信息的java进程id,可以用jps查询.    
-    
+---step1---
+先是有jps查看进程号：
+hollis@hos:~$ jps
+29788 JStackDemo1
+29834 Jps
+22385 org.eclipse.equinox.launcher_1.3.0.v20130327-1440.jar
+---step2---  
+然后使用jstack 查看堆栈信息：  
+hollis@hos:~$ jstack 29788
+2015-04-17 23:47:31
+...此处省略若干内容...
+"main" prio=10 tid=0x00007f197800a000 nid=0x7462 runnable [0x00007f197f7e1000]
+   java.lang.Thread.State: RUNNABLE
+    at javaCommand.JStackDemo1.main(JStackDemo1.java:7)
+其他
+虚拟机执行Full GC时,会阻塞所有的用户线程。因此,即时获取到同步锁的线程也有可能被阻塞。 在查看线程Dump时,首先查看内存使用情况。    
 ```
 <p align="center"><img src ="picture/Monitor.PNG" alt="horizon" /></p>
 
