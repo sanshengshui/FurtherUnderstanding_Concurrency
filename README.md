@@ -37,7 +37,6 @@ hollis,chuang,执行jsp -m:
     jps是我最常用的java命令。使用jps可以查看当前有哪些Java进程处于运行状态。如果我运行了一个web应用（使用tomcat、jboss、
 jetty等启动）的时候，我就可以使用jps查看启动情况。有的时候我想知道这个应用的日志会输出到哪里，或者启动的时候使用了哪些
 javaagent，那么我可以使用jps -v 查看进程的jvm参数情况。
-<p align="center"><img src ="picture/jps.PNG" alt="JPS logo" /></p>
 
  JPS失效处理
     现象： 用ps -ef|grep java能看到启动的java进程，但是用jps查看却不存在该进程的id。待会儿解释过之后就能知道在该情况下，
@@ -57,6 +56,7 @@ jconsole、jvisualvm可能无法监控该进程，其他java自带工具也可�
     2.如何给JVM传递参数 在eclipse中，鼠标右键->Run As->Run COnfiguations->Arguments->在VM arguments中写下要传的参数值
 （一般以-D开头）
 ```
+<p align="center"><img src ="picture/jps.PNG" alt="JPS logo" /></p>
 
 - Jstack
 ```
