@@ -119,7 +119,18 @@ synchronized保护起来的代码段为临界区。当一个线程申请进入�
     分线程调度的休眠
 正常的线程池等待
 可疑的线程等待
-    
+
+------入手点总结------
+Wait on monitor entry : 被组塞的，肯定有问题
+runnable              :注意IO线程
+in Object.wait()      ：注意非线程池等待
+   
+使用
+    -F 当’jstack [-l] pid’没有相应的时候强制打印栈信息
+    -l 长列表. 打印关于锁的附加信息,例如属于java.util.concurrent的ownable synchronizers列表. 
+    -m 打印java和native c/c++框架的所有栈信息. 
+    -h | -help打印帮助信息 
+    pid 需要被打印配置信息的java进程id,可以用jps查询.    
     
 ```
 <p align="center"><img src ="picture/Monitor.PNG" alt="horizon" /></p>
