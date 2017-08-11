@@ -150,5 +150,20 @@ hollis@hos:~$ jstack 29788
 ```
 <p align="center"><img src ="picture/Monitor.PNG" alt="horizon" /></p>
 
+- Jmap
+```
+描述
+    jmap是JDK自带的工具软件，主要用于打印指定Java进程(或核心文件、远程调试服务器)的共享对象内存映射或堆内存细节。可以使用jmap生成Heap
+Dump。
+什么是堆Dump
+    堆Dump是反应Java堆使用情况的内存镜像，其中主要包括系统信息、虚拟机属性、完整的线程Dump、所有类和对象的状态等。 一般，在内存不足、
+GC异常等情况下，我们就会怀疑有内存泄露。这个时候我们就可以制作堆Dump来查看具体情况。分析原因。
+基础知识
+    outOfMemoryError 年老代内存不足。
+    outOfMemoryError:PermGen Space 永久代内存不足。
+    outOfMemoryError:GC overhead limit exceed 垃圾回收时间占用系统运行时间的98%或以上。
+```
+
+
 
 
