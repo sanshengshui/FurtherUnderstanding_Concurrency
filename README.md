@@ -215,6 +215,7 @@ where <option> is one of:
     -h 打印帮助信息。
     -help 打印帮助信息。
     -J<flag> 指定传递给运行jmap的JVM的参数。
+    
 查看java堆(heap)使用情况,执行命令: jmap -heap 31846
 Attaching to process ID 31846, please wait...
 Debugger attached successfully.
