@@ -162,6 +162,39 @@ GC异常等情况下，我们就会怀疑有内存泄露。这个时候我们就
     outOfMemoryError 年老代内存不足。
     outOfMemoryError:PermGen Space 永久代内存不足。
     outOfMemoryError:GC overhead limit exceed 垃圾回收时间占用系统运行时间的98%或以上。
+用法摘要
+Terminal jmap打印log:    
+Usage:
+    jmap [option] <pid>
+        (to connect to running process)
+    jmap [option] <executable <core>
+        (to connect to a core file)
+    jmap [option] [server_id@]<remote server IP or hostname>
+        (to connect to remote debug server)
+
+where <option> is one of:
+    <none>               to print same info as Solaris pmap
+    -heap                to print java heap summary
+    -histo[:live]        to print histogram of java object heap; if the "live"
+                         suboption is specified, only count live objects
+    -clstats             to print class loader statistics
+    -finalizerinfo       to print information on objects awaiting finalization
+    -dump:<dump-options> to dump java heap in hprof binary format
+                         dump-options:
+                           live         dump only live objects; if not specified,
+                                        all objects in the heap are dumped.
+                           format=b     binary format
+                           file=<file>  dump heap to <file>
+                         Example: jmap -dump:live,format=b,file=heap.bin <pid>
+    -F                   force. Use with -dump:<dump-options> <pid> or -histo
+                         to force a heap dump or histogram when <pid> does not
+                         respond. The "live" suboption is not supported
+                         in this mode.
+    -h | -help           to print this help message
+    -J<flag>             to pass <flag> directly to the runtime system
+
+    参数
+    选项   
 ```
 
 
