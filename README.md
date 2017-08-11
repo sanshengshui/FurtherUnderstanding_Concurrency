@@ -193,8 +193,80 @@ where <option> is one of:
     -h | -help           to print this help message
     -J<flag>             to pass <flag> directly to the runtime system
 
-    参数
-    选项   
+参数
+    option 选项参数是互斥的(不可同时使用)。想要使用选项参数，直接跟在命令名称后即可。
+    pid 需要打印配置信息的进程ID。该进程必须是一个Java进程。想要获取运行的Java进程列表，你可以使用jps。
+    executable 产生核心dump的Java可执行文件。
+    core 需要打印配置信息的核心文件。
+    remote-hostname-or-IP 远程调试服务器的(请查看jsadebugd)主机名或IP地址。
+    server-id 可选的唯一id，如果相同的远程主机上运行了多台调试服务器，用此选项参数标识服务器。
+选项   
+    <no option> 如果使用不带选项参数的jmap打印共享对象映射，将会打印目标虚拟机中加载的每个共享对象的起始地址、映射大小以及共享对象文件
+    的路径全称。这与Solaris的pmap工具比较相似。
+    -dump:[live,]format=b,file=<filename> 以hprof二进制格式转储Java堆到指定filename的文件中。live子选项是可选的。如果指定了live
+    子选项，堆中只有活动的对象会被转储。想要浏览heap dump，你可以使用jhat(Java堆分析工具)读取生成的文件。
+    -finalizerinfo 打印等待终结的对象信息。
+    -heap 打印一个堆的摘要信息，包括使用的GC算法、堆配置信息和generation wise heap usage。
+    -histo[:live] 打印堆的柱状图。其中包括每个Java类、对象数量、内存大小(单位：字节)、完全限定的类名。打印的虚拟机内部的类名称将会带有
+     一个’*’前缀。如果指定了live子选项，则只计算活动的对象。
+    -permstat 打印Java堆内存的永久保存区域的类加载器的智能统计信息。对于每个类加载器而言，它的名称、活跃度、地址、父类加载器、它所加载
+    的类的数量和大小都会被打印。此外，包含的字符串数量和大小也会被打印。
+    -F 强制模式。如果指定的pid没有响应，请使用jmap -dump或jmap -histo选项。此模式下，不支持live子选项。
+    -h 打印帮助信息。
+    -help 打印帮助信息。
+    -J<flag> 指定传递给运行jmap的JVM的参数。
+查看java堆(heap)使用情况,执行命令: jmap -heap 31846
+Attaching to process ID 31846, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 24.71-b01
+
+using thread-local object allocation.
+Parallel GC with 4 thread(s)//GC 方式
+
+Heap Configuration: //堆内存初始化配置
+   MinHeapFreeRatio = 0 //对应jvm启动参数-XX:MinHeapFreeRatio设置JVM堆最小空闲比率(default 40)
+   MaxHeapFreeRatio = 100 //对应jvm启动参数 -XX:MaxHeapFreeRatio设置JVM堆最大空闲比率(default 70)
+   MaxHeapSize      = 2082471936 (1986.0MB) //对应jvm启动参数-XX:MaxHeapSize=设置JVM堆的最大大小
+   NewSize          = 1310720 (1.25MB)//对应jvm启动参数-XX:NewSize=设置JVM堆的‘新生代’的默认大小
+   MaxNewSize       = 17592186044415 MB//对应jvm启动参数-XX:MaxNewSize=设置JVM堆的‘新生代’的最大大小
+   OldSize          = 5439488 (5.1875MB)//对应jvm启动参数-XX:OldSize=<value>:设置JVM堆的‘老生代’的大小
+   NewRatio         = 2 //对应jvm启动参数-XX:NewRatio=:‘新生代’和‘老生代’的大小比率
+   SurvivorRatio    = 8 //对应jvm启动参数-XX:SurvivorRatio=设置年轻代中Eden区与Survivor区的大小比值 
+   PermSize         = 21757952 (20.75MB)  //对应jvm启动参数-XX:PermSize=<value>:设置JVM堆的‘永生代’的初始大小
+   MaxPermSize      = 85983232 (82.0MB)//对应jvm启动参数-XX:MaxPermSize=<value>:设置JVM堆的‘永生代’的最大大小
+   G1HeapRegionSize = 0 (0.0MB)
+
+Heap Usage://堆内存使用情况
+PS Young Generation
+Eden Space://Eden区内存分布
+   capacity = 33030144 (31.5MB)//Eden区总容量
+   used     = 1524040 (1.4534378051757812MB)  //Eden区已使用
+   free     = 31506104 (30.04656219482422MB)  //Eden区剩余容量
+   4.614088270399305% used //Eden区使用比率
+From Space:  //其中一个Survivor区的内存分布
+   capacity = 5242880 (5.0MB)
+   used     = 0 (0.0MB)
+   free     = 5242880 (5.0MB)
+   0.0% used
+To Space:  //另一个Survivor区的内存分布
+   capacity = 5242880 (5.0MB)
+   used     = 0 (0.0MB)
+   free     = 5242880 (5.0MB)
+   0.0% used
+PS Old Generation //当前的Old区内存分布
+   capacity = 86507520 (82.5MB)
+   used     = 0 (0.0MB)
+   free     = 86507520 (82.5MB)
+   0.0% used
+PS Perm Generation//当前的 “永生代” 内存分布
+   capacity = 22020096 (21.0MB)
+   used     = 2496528 (2.3808746337890625MB)
+   free     = 19523568 (18.619125366210938MB)
+   11.337498256138392% used
+
+670 interned Strings occupying 43720 bytes.
+   
 ```
 
 
