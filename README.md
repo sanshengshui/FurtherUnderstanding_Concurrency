@@ -268,6 +268,36 @@ PS Perm Generation//当前的 “永生代” 内存分布
    11.337498256138392% used
 
 670 interned Strings occupying 43720 bytes.
+
+查看堆内存(histogram)中的对象数量及大小。
+执行命令： hollis@hos:~/workspace/design_apaas/apaasweb/control/bin$ jmap -histo 3331
+num     #instances         #bytes  class name
+编号     个数                字节     类名
+----------------------------------------------
+   1:             7        1322080  [I
+   2:          5603         722368  <methodKlass>
+   3:          5603         641944  <constMethodKlass>
+   4:         34022         544352  java.lang.Integer
+   5:           371         437208  <constantPoolKlass>
+   6:           336         270624  <constantPoolCacheKlass>
+   7:           371         253816  <instanceKlassKlass>
+
+jmap -histo:live 这个命令执行，JVM会先触发gc，然后再统计信息。   
+
+将内存使用的详细情况输出到文件，
+执行命令： hollis@hos:~/workspace/design_apaas/apaasweb/control/bin$ jmap -dump:format=b,file=heapDump 6900
+然后用jhat命令可以参看 jhat -port 5000 heapDump 在浏览器中访问：http://localhost:5000/ 查看详细信息
+这个命令执行，JVM会将整个heap的信息dump写入到一个文件，heap如果比较大的话，就会导致这个过程比较耗时，
+并且执行的过程中为了保证dump的信息是可靠的，所以会暂停应用。
+
+总结
+1.如果程序内存不足或者频繁GC，很有可能存在内存泄露情况，这时候就要借助Java堆Dump查看对象的情况。
+2.要制作堆Dump可以直接使用jvm自带的jmap命令
+3.可以先使用jmap -heap命令查看堆的使用情况，看一下各个堆空间的占用情况。
+4.使用jmap -histo:[live]查看堆内存中的对象的情况。如果有大量对象在持续被引用，并没有被释放掉，那就产生了内存泄露，
+就要结合代码，把不用的对象释放掉。
+5.也可以使用 jmap -dump:format=b,file=<fileName>命令将堆信息保存到一个文件中，再借助jhat命令查看详细内容
+6.在内存出现泄露、溢出或者其它前提条件下，建议多dump几次内存，把内存文件进行编号归档，便于后续内存整理分析。
    
 ```
 
