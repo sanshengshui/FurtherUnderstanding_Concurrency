@@ -298,6 +298,14 @@ jmap -histo:live 这个命令执行，JVM会先触发gc，然后再统计信息�
 就要结合代码，把不用的对象释放掉。
 5.也可以使用 jmap -dump:format=b,file=<fileName>命令将堆信息保存到一个文件中，再借助jhat命令查看详细内容
 6.在内存出现泄露、溢出或者其它前提条件下，建议多dump几次内存，把内存文件进行编号归档，便于后续内存整理分析。
+
+Error attaching to process: sun.jvm.hotspot.debugger.DebuggerException: Can’t attach to the process
+在ubuntu中第一次使用jmap会报错：Error attaching to process: sun.jvm.hotspot.debugger.DebuggerException: 
+Can't attach to the process，这是oracla文档中提到的一个bug:http://bugs.java.com/bugdatabase/view_bug.do?bug_id=7050524,
+解决方式如下：
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope 该方法在下次重启前有效。
+永久有效方法 sudo vi /etc/sysctl.d/10-ptrace.conf 编辑下面这行: kernel.yama.ptrace_scope = 1 
+修改为: kernel.yama.ptrace_scope = 0 重启系统，使修改生效。
    
 ```
 
