@@ -308,6 +308,8 @@ echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope 该方法在下次重启前
 修改为: kernel.yama.ptrace_scope = 0 重启系统，使修改生效。
    
 ```
+- TProfiler介绍
+
 
 
 
