@@ -322,8 +322,8 @@ TProfiler在JVM启动时把时间采集程序注入到字节码中,整个过程�
 
 <table>
    <tr>
-      <td>与同类开源工具jip对比</td>
       <td></td>
+      <td>与同类开源工具jip对比</td>
       <td></td>
    </tr>
    <tr>
