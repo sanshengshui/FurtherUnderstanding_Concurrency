@@ -385,6 +385,49 @@ TProfiler在JVM启动时把时间采集程序注入到字节码中,整个过程�
 ### 运行实现原理
 <p align="center"><img src ="picture/运行实现原理.png" alt="horizon" /></p>
 
+## TProfiler日志分析
+```
+tprofiler.log文件格式说明:
+
+线程ID 线程栈深度 方法ID 方法执行时间
+13	2	14558	6
+13	2	14554	2
+13	3	14576	2
+13	4	14567	2
+13	2	14554	4
+13	2	14556	13
+分析sampler log命令: 
+java -cp tprofiler.jar com.taobao.profile.analysis.SamplerLogAnalysis d:/tsampler.log d:/method.log d:/thread.log,
+会生成method.log和thread.log
+
+method.log文件格式说明:
+
+方法信息 采样过程中方法出现次数
+org.quartz.simpl.SimpleThreadPool.getNextRunnable(SimpleThreadPool.java:428)	19728
+org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:518)	19728
+org.quartz.simpl.SimpleThreadPool.access$000(SimpleThreadPool.java:47)	19728
+org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:51)	17558
+thread.log文件格式说明:
+
+线程信息 采样过程中线程出现次数
+56	DefaultQuartzScheduler_Worker-3	TIMED_WAITING	661
+55	DefaultQuartzScheduler_Worker-2	TIMED_WAITING	661
+60	DefaultQuartzScheduler_Worker-7	TIMED_WAITING	661
+分析profiler log命令: java -cp tprofiler.jar com.taobao.profile.analysis.ProfilerLogAnalysis 
+d:/tprofiler.log d:/tmethod.log d:/topmethod.log d:/topobject.log,会生成topmethod.log和topobject.log
+
+topmethod.log文件格式说明:
+
+方法信息 执行次数 平均执行时间 全部执行时间
+org/apache/velocity/runtime/parser/node/ASTBlock:render:74	38954	28	1101570
+org/apache/velocity/runtime/parser/node/SimpleNode:render:338	39202	21	820064
+topobject.log文件格式说明:
+
+方法信息 执行次数 平均执行时间 全部执行时间
+sketch/compile/parser/node/PropertyExecutor:<init>:32	573	1	636
+sketch/util/introspection/UberspectImpl:<init>:282	34	7	241
+```
+
 
 
 
