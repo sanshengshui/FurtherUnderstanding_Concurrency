@@ -23,9 +23,9 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="635">
-                <caret line="382" column="42" lean-forward="false" selection-start-line="382" selection-start-column="42" selection-end-line="382" selection-end-column="42" />
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="649">
+                <caret line="382" column="46" lean-forward="false" selection-start-line="382" selection-start-column="46" selection-end-line="382" selection-end-column="46" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -485,12 +485,12 @@
       <workItem from="1502870604977" duration="596000" />
       <workItem from="1502876877661" duration="276000" />
       <workItem from="1502932738150" duration="779000" />
-      <workItem from="1502951798537" duration="2709000" />
+      <workItem from="1502951798537" duration="2810000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49481000" />
+    <option name="totallyTimeSpent" value="49582000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
@@ -813,9 +813,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="635">
-            <caret line="382" column="42" lean-forward="false" selection-start-line="382" selection-start-column="42" selection-end-line="382" selection-end-column="42" />
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="649">
+            <caret line="382" column="46" lean-forward="false" selection-start-line="382" selection-start-column="46" selection-end-line="382" selection-end-column="46" />
             <folding />
           </first_editor>
           <second_editor />

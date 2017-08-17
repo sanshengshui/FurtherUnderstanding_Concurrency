@@ -380,7 +380,7 @@ TProfiler在JVM启动时把时间采集程序注入到字节码中,整个过程�
 
 ## TProfiler实现原理
 ### 字节码修改
-<p align="center"><img src ="picture/字节码修改.PNG" alt="horizon" /></p>
+<p align="center"><img src ="picture/字节码修改.png" alt="horizon" /></p>
 
 
 
