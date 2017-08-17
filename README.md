@@ -429,6 +429,59 @@ sketch/util/introspection/UberspectImpl:<init>:282	34	7	241
 ```
 ## TProfiler配置部署
 ```
+打包
+下载源码,在根目录运行package.bat脚本或者执行mvn assembly:assembly命令,将生成的包含依赖的jar包重命名为tprofiler.jar即可
+配置
+profile.properties作为tprofiler.jar的配置文件，需要和Jar包放在相同的目录(例如/home/admin/tprofiler/),根据实际情况调整配置;
+如果不显式配置这个文件,将使用默认配置
+其中
+startProfTime = 9:00:00 开始profile的时间点
+endProfTime = 11:00:00 结束profile的时间点
+eachProfUseTime = 5 profile时间长度(单位秒)
+eachProfIntervalTime = 50 两次profile的时间间隔(单位秒)
+samplerIntervalTime = 20 两次采样的时间间隔(单位秒)
+debugMode = false 是否进入调试模式
+needNanoTime = false 是否需要用纳秒记录时间
+ignoreGetSetMethod = true 是否忽略采集get/set方法
+logFilePath = /home/admin/logs/tprofiler.log profile log的存放位置
+methodFilePath = /home/admin/logs/tmethod.log method log的存放位置
+samplerFilePath = /home/admin/logs/tsampler.log sampler log的存放位置
+excludeClassLoader = org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader 不注入的类加载器(分号分割)
+includePackageStartsWith = com.taobao 进行profile的类包名(分号分割)
+excludePackageStartsWith = com.alibaba;com.taobao.forest.domain.dataobject 不进行profile的类包名(分号分割)
+部署
+在 jvm 启动参数中添加-javaagent:/path/tprofiler.jar -Dprofile.properties=/path/profile.properties，然后重启应用
+重启后就会在logFilePath设置的路径下出现log文件,共有3个:
+tsampler.log
+tprofiler.log
+tmethod.log
+为了提升性能将method单独输出,此一项改进使log减小为原来的1/8
+endProfTime时间到了后才会输出tmethod.log(因为在这个时间之前有些类和方法没有被load,所以选择profile结束后一次性输出method)
+远程操作
+远程查看状态操作:
+java -cp tprofiler.jar com.taobao.profile.client.TProfilerClient 10.232.*.* 端口号 status
+
+远程开始操作:
+
+java -cp tprofiler.jar com.taobao.profile.client.TProfilerClient 10.232.*.* 端口号 start
+
+远程停止操作:
+
+java -cp tprofiler.jar com.taobao.profile.client.TProfilerClient 10.232.*.* 端口号 stop
+
+远程刷出方法数据:
+
+java -cp tprofiler.jar com.taobao.profile.client.TProfilerClient 10.232.*.* 端口号 flushmethod
+
+卸载
+
+在 jvm 启动参数中去掉相关参数 -javaagent:/path/tprofiler.jar -Dprofile.properties=/path/profile.properties, 重启应用即可
+卸载此工具
+
+注意事项
+
+在采集时间区间内重启应用, 需要手动清空当天生成的日志; 采集时间过去以后, 修改时间区间重新启动应用, 需要手动清空当天生成的
+日志因为当天日志会续写, 两次采集的日志写到一个文件中, 会导致分析结果不准! 线上长期运行的应用无此问题
 ```
 
 
