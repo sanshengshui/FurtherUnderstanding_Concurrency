@@ -320,6 +320,8 @@ TProfiler在JVM启动时把时间采集程序注入到字节码中,整个过程�
 部署后低峰期对应用响应时间影响20% 高峰期对吞吐量大约有30%的降低(高峰期可以远程关闭此工具)
 ```
 
+<p align="center"><img src ="picture/同类对比.png" alt="horizon" /></p>
+
 <table>
    <tr>
       <td></td>
