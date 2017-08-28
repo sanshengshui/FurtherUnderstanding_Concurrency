@@ -95,3 +95,5 @@ AlarmAgent创建了一个专门的线程用于其与告警服务器建立网路�
 若AlarmAgent与告警服务器的连接未建立(或者连接中断)，
 sendAlarm方法的执行线程应该暂挂直到连接建立完毕(或者恢复)
 ```
+## Java并发包学习
+### 解密ThreadLocal
