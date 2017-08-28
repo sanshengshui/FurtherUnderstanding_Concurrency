@@ -1,4 +1,6 @@
 # JVM and Concurrency [![知识共享协议（CC协议）](https://img.shields.io/badge/License-Creative%20Commons-DC3D24.svg) ![Attribution-NonCommercial-ShareAlike CC BY-NC-SA](LICENSE.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)
+[![GitHub stars](https://img.shields.io/github/stars/oldratlee/translations.svg?style=social&label=Star)](https://github.com/sanshengshui/FurtherUnderstanding_Concurrency/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/oldratlee/translations.svg?style=social&label=Fork)](https://github.com/sanshengshui/FurtherUnderstanding_Concurrency/fork)
 # 参考书籍  　　
 - Java多线程编程实战指南(设计模式篇)  　　
 - Java Concurrency in Practice
