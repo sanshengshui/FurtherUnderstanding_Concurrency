@@ -2,7 +2,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/sanshengshui/FurtherUnderstanding_Concurrency.svg?style=social&label=Star)](https://github.com/sanshengshui/FurtherUnderstanding_Concurrency/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/sanshengshui/FurtherUnderstanding_Concurrency.svg?style=social&label=Fork)](https://github.com/sanshengshui/FurtherUnderstanding_Concurrency/fork)
 
-JVM和多线程学习感想和日常记录
+JVM和多线程学习感想和日常记录 <br/>
 [自己](https://github.com/sanshengshui)想到去做些翻译，一是促进自己的深入学习，二是便于以后随时翻阅并加深印象并且能为大家带来便利。
 # 文章分类  　　
 - Java多线程编程实战指南(设计模式篇)  　　
