@@ -108,5 +108,39 @@ sendAlarm方法的执行线程应该暂挂直到连接建立完毕(或者恢复)
 卡)。这样就能达到只要是我(同一个线程)需要公交卡，何时何地都能向这个机构要的目的。
     有人要说了:你可以将公交卡设置为全局变量啊，这样不是也能何时何地都能取公交卡吗?但是如果有很多个人(很多个线程)呢?大家可
 不能都使用同一张公交卡吧(我们假设公交卡是实名认证的)，这样不就乱套了嘛。现在明白了吧？这就是ThreadLocal设计的初衷:提供线
-程内部的局部变量，在本线程内随时随地可取，隔离其他线程。            
+程内部的局部变量，在本线程内随时随地可取，隔离其他线程。  
+    ThreadLocal基本操作
+    构造函数
+    ThreadLocal的构造函数签名是这样的:
+    public ThreadLocal(){}
+    内部啥也没做。
+    initialValue函数
+    initialValue函数用来设置ThreadLocal的初始值，函数签名如下:
+    protected T initialValue() {
+            return null;
+        }
+    该函数在调用get函数的时候会第一次调用，但是如果一开始就调用了set函数，则该函数不会被调用。通常该函数只会被调用一次，
+除非手动调用了remove函数之后又调用get函数，这种情况下，get函数中还是会调用initialValue函数。该函数是protected类型的，很
+显然是建议在子类重载该函数的，所以通常该函数都会以匿名内部类的形式被重载，以指定初始值，比如: 
+    public class TestThreadLocal {
+        private static final ThreadLocal<Integer> value = new ThreadLocal<Integer>() {
+            @Override
+            protected Integer initialValue() {
+                return Integer.valueOf(1);
+            }
+        };
+    }
+    get函数
+    该函数用来获取与当前线程关联的ThreadLocal的值,函数签名如下:
+    public T get()
+    如果当前线程没有该ThreadLocal的值，则调用initialValue函数获取初始值返回。
+    set函数
+    set函数用来设置当前线程的该ThreadLocal的值，函数签名如下:
+    public void set(T value)
+    设置当前线程的ThreadLocal的值为value。
+    remove函数
+    remove函数用来将当前线程的ThreadLocal绑定的值删除，函数签名如下:
+    public void remove()
+    在某些情况下需要手动调用该函数，防止内存泄漏。
+                 
 ```
