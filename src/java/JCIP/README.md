@@ -142,5 +142,9 @@ sendAlarm方法的执行线程应该暂挂直到连接建立完毕(或者恢复)
     remove函数用来将当前线程的ThreadLocal绑定的值删除，函数签名如下:
     public void remove()
     在某些情况下需要手动调用该函数，防止内存泄漏。
-                 
+    
+    如何实现的
+    ThreadLocal的设计思路:
+    每个Thread维护一个ThreadLocalMap映射表，这个映射表的Key是ThreadLocal实例本身,value是真正需要存储的Object。              
 ```
+<p align="center"><img src ="picture/ThreadLocal.png" alt="JPS logo" /></p>
