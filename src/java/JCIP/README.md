@@ -145,7 +145,21 @@ sendAlarm方法的执行线程应该暂挂直到连接建立完毕(或者恢复)
     
     如何实现的
     ThreadLocal的设计思路:
-    每个Thread维护一个ThreadLocalMap映射表，这个映射表的Key是ThreadLocal实例本身,value是真正需要存储的Object。              
+    每个Thread维护一个ThreadLocalMap映射表，这个映射表的Key是ThreadLocal实例本身,value是真正需要存储的Object。 
+    然后网上就传言，ThreadLocal会引发内存泄露，他们的理由是这样的：如上图，ThreadLocalMap使用ThreadLocal的弱引用作为key，
+如果一个ThreadLocal没有外部强引用引用他，那么系统gc的时候，这个ThreadLocal势必会被回收，这样一来，ThreadLocalMap中就会出
+现key为null的Entry，就没有办法访问这些key为null的Entry的value，如果当前线程再迟迟不结束的话，这些key为null的Entry的value
+就会一直存在一条强引用链：ThreadLocal Ref -> Thread -> ThreaLocalMap -> Entry -> value永远无法回收，造成内存泄露。
+
+    整理一下ThreadLocalMap的getEntry函数的流程：首先从ThreadLocal的直接索引位置(通过ThreadLocal.threadLocalHashCode & 
+(len-1)运算得到)获取Entry e，如果e不为null并且key相同则返回e；如果e为null或者key不一致则向下一个位置查询，如果下一个位置
+的key和当前需要查询的key相等，则返回对应的Entry，否则，如果key值为null，则擦除该位置的Entry，否则继续向下一个位置查询在
+这个过程中遇到的key为null的Entry都会被擦除，那么Entry内的value也就没有强引用链，自然会被回收。仔细研究代码可以发现，set
+操作也有类似的思想，将key为null的这些Entry都删除，防止内存泄露。 但是光这样还是不够的，上面的设计思路依赖一个前提条件：
+要调用ThreadLocalMap的genEntry函数或者set函数。这当然是不可能任何情况都成立的，所以很多情况下需要使用者手动调用ThreadLocal
+的remove函数，手动删除不再需要的ThreadLocal，防止内存泄露。所以JDK建议将ThreadLocal变量定义成private static的，这样的话
+ThreadLocal的生命周期就更长，由于一直存在ThreadLocal的强引用，所以ThreadLocal也就不会被回收，也就能保证任何时候都能根据
+ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内存泄露。
+               
 ```
 
-<p align="center"><img src ="picture/ThreadLocal.png" alt="JPS logo" /></p>
