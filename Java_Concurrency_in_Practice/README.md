@@ -161,6 +161,8 @@ sendAlarm方法的执行线程应该暂挂直到连接建立完毕(或者恢复)
 ThreadLocal的生命周期就更长，由于一直存在ThreadLocal的强引用，所以ThreadLocal也就不会被回收，也就能保证任何时候都能根据
 ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内存泄露。               
 ```
+<p align="center"><img src ="picture/ThreadLocal.png" alt="ThreadLocal.png" /></p>
+
 ### 深度剖析ConcurrentHashMap
 ```
     HashMap是非线程安全的，HashTable是线程安全的。

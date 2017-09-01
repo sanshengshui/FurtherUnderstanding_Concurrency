@@ -35,12 +35,19 @@
         <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="687">
-                <caret line="211" column="3" lean-forward="true" selection-start-line="211" selection-start-column="3" selection-end-line="211" selection-end-column="3" />
+              <first_editor relative-caret-position="174">
+                <caret line="168" column="78" lean-forward="true" selection-start-line="168" selection-start-column="78" selection-end-line="168" selection-end-column="78" />
                 <folding />
               </first_editor>
               <second_editor />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ThreadLocal.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/picture/ThreadLocal.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -49,7 +56,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
               <first_editor relative-caret-position="475">
-                <caret line="173" column="70" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="70" />
+                <caret line="173" column="26" lean-forward="false" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="70" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -506,12 +513,12 @@
       <workItem from="1504055403064" duration="5156000" />
       <workItem from="1504084265031" duration="2813000" />
       <workItem from="1504145030874" duration="22013000" />
-      <workItem from="1504227320939" duration="5498000" />
+      <workItem from="1504227320939" duration="5795000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174386000" />
+    <option name="totallyTimeSpent" value="174683000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
@@ -600,7 +607,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/java/Chapter01/ThreadNotSafe/WorkerThread.java" />
     <entry file="file://$PROJECT_DIR$/src/java/Chapter01/ThreadNotSafe/WorkerThread.java" />
     <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="file://$PROJECT_DIR$/src/java/Chapter01/ThreadNotSafe/WorkerThread.java" />
@@ -789,11 +795,16 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/picture/ThreadLocal.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
           <first_editor relative-caret-position="475">
-            <caret line="173" column="70" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="70" />
+            <caret line="173" column="26" lean-forward="false" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="70" />
             <folding />
           </first_editor>
           <second_editor />
@@ -803,8 +814,8 @@
     <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="687">
-            <caret line="211" column="3" lean-forward="true" selection-start-line="211" selection-start-column="3" selection-end-line="211" selection-end-column="3" />
+          <first_editor relative-caret-position="174">
+            <caret line="168" column="78" lean-forward="true" selection-start-line="168" selection-start-column="78" selection-end-line="168" selection-end-column="78" />
             <folding />
           </first_editor>
           <second_editor />
