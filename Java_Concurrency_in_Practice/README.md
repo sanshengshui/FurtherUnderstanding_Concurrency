@@ -146,7 +146,7 @@ sendAlarm方法的执行线程应该暂挂直到连接建立完毕(或者恢复)
     如何实现的
     ThreadLocal的设计思路:
     每个Thread维护一个ThreadLocalMap映射表，这个映射表的Key是ThreadLocal实例本身,value是真正需要存储的Object。 
-    然后网上就传言，ThreadLocal会引发内存泄露，他们的理由是这样的：如上图，ThreadLocalMap使用ThreadLocal的弱引用作为key，
+    然后网上就传言，ThreadLocal会引发内存泄露，他们的理由是这样的：如下图，ThreadLocalMap使用ThreadLocal的弱引用作为key，
 如果一个ThreadLocal没有外部强引用引用他，那么系统gc的时候，这个ThreadLocal势必会被回收，这样一来，ThreadLocalMap中就会出
 现key为null的Entry，就没有办法访问这些key为null的Entry的value，如果当前线程再迟迟不结束的话，这些key为null的Entry的value
 就会一直存在一条强引用链：ThreadLocal Ref -> Thread -> ThreaLocalMap -> Entry -> value永远无法回收，造成内存泄露。
@@ -161,7 +161,7 @@ sendAlarm方法的执行线程应该暂挂直到连接建立完毕(或者恢复)
 ThreadLocal的生命周期就更长，由于一直存在ThreadLocal的强引用，所以ThreadLocal也就不会被回收，也就能保证任何时候都能根据
 ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内存泄露。               
 ```
-<p align="center"><img src ="picture/ThreadLocal.png" alt="ThreadLocal.png" /></p>
+<p align="center"><img src ="ThreadLocal.png" alt="ThreadLocal.png" /></p>
 
 ### 深度剖析ConcurrentHashMap
 ```

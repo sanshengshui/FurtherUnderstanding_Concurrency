@@ -35,8 +35,8 @@
         <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="174">
-                <caret line="168" column="78" lean-forward="true" selection-start-line="168" selection-start-column="78" selection-end-line="168" selection-end-column="78" />
+              <first_editor relative-caret-position="763">
+                <caret line="163" column="29" lean-forward="false" selection-start-line="163" selection-start-column="29" selection-end-line="163" selection-end-column="29" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -45,7 +45,7 @@
         </entry>
       </file>
       <file leaf-file-name="ThreadLocal.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/picture/ThreadLocal.png">
+        <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/ThreadLocal.png">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
@@ -513,12 +513,12 @@
       <workItem from="1504055403064" duration="5156000" />
       <workItem from="1504084265031" duration="2813000" />
       <workItem from="1504145030874" duration="22013000" />
-      <workItem from="1504227320939" duration="5795000" />
+      <workItem from="1504227320939" duration="5945000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174683000" />
+    <option name="totallyTimeSpent" value="174833000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
@@ -795,7 +795,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/picture/ThreadLocal.png">
+    <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/ThreadLocal.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -814,8 +814,8 @@
     <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="174">
-            <caret line="168" column="78" lean-forward="true" selection-start-line="168" selection-start-column="78" selection-end-line="168" selection-end-column="78" />
+          <first_editor relative-caret-position="763">
+            <caret line="163" column="29" lean-forward="false" selection-start-line="163" selection-start-column="29" selection-end-line="163" selection-end-column="29" />
             <folding />
           </first_editor>
           <second_editor />
