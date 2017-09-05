@@ -176,8 +176,21 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
         内存屏障，又称内存栅栏，是一个CPU指令，基本上它是一条这样的指令：
         1、保证特定操作的执行顺序。
         2、影响某些数据（或则是某条指令的执行结果）的内存可见性。
-    
+        编译器和CPU能够重排序指令，保证最终相同的结果，尝试优化性能。插入一条Memory Barrier会告诉编译器和CPU：不管什么指令
+        都不能和这条Memory Barrier指令重排序。
+        Memory Barrier所做的另外一件事是强制刷出各种CPU cache，如一个 Write-Barrier（写入屏障）将刷出所有在 Barrier 之前
+        写入 cache 的数据，因此，任何CPU上的线程都能读取到这些数据的最新版本。见下图
+        这和java有什么关系？volatile是基于Memory Barrier实现的。
+        如果一个变量是volatile修饰的，JMM会在写入这个字段之后插进一个Write-Barrier指令，并在读这个字段之前插入一个
+        Read-Barrier指令。见下图
+        这意味着，如果写入一个volatile变量a，可以保证：
+        1、一个线程写入变量a后，任何线程访问该变量都会拿到最新值。
+        2、在写入变量a之前的写入操作，其更新的数据对于其他线程也是可见的。因为Memory Barrier会刷出cache中的所有先前的写入。    
+   
 ```
+<p align="center"><img src ="MemoryBarrier.png" alt="Memory Barrier(内存屏障)" /></p>
+<p align="center"><img src ="volatile.png" alt="volatile关键字" /></p>
+
 - Java中的Unsafe
 ```
 前言

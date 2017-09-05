@@ -35,8 +35,8 @@
         <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="345">
-                <caret line="180" column="14" lean-forward="true" selection-start-line="180" selection-start-column="14" selection-end-line="180" selection-end-column="14" />
+              <first_editor relative-caret-position="313">
+                <caret line="182" column="49" lean-forward="true" selection-start-line="182" selection-start-column="49" selection-end-line="182" selection-end-column="49" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -101,8 +101,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="729" />
-    <option name="y" value="39" />
+    <option name="x" value="613" />
+    <option name="y" value="31" />
     <option name="width" value="1874" />
     <option name="height" value="1045" />
   </component>
@@ -121,9 +121,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -165,7 +166,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -178,15 +178,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\git\FurtherUnderstanding_Concurrency\Java_Concurrency_in_Practice" />
-      <recent name="D:\git\FurtherUnderstanding_Concurrency\picture" />
-      <recent name="D:\git\FurtherUnderstanding_Concurrency\src\java\JCIP\java\util" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\git\FurtherUnderstanding_Concurrency\Java_Concurrency_in_Practice" />
       <recent name="D:\git\FurtherUnderstanding_Concurrency" />
       <recent name="D:\git\FurtherUnderstanding_Concurrency\picture" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git\FurtherUnderstanding_Concurrency\Java_Concurrency_in_Practice" />
+      <recent name="D:\git\FurtherUnderstanding_Concurrency\picture" />
+      <recent name="D:\git\FurtherUnderstanding_Concurrency\src\java\JCIP\java\util" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -518,15 +518,16 @@
       <workItem from="1504337663116" duration="1513000" />
       <workItem from="1504488531583" duration="1442000" />
       <workItem from="1504490065257" duration="9249000" />
-      <workItem from="1504516847120" duration="4896000" />
+      <workItem from="1504516847120" duration="4990000" />
+      <workItem from="1504570864462" duration="1684000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208326000" />
+    <option name="totallyTimeSpent" value="210104000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="729" y="39" width="1874" height="1045" extended-state="0" />
+    <frame x="613" y="31" width="1874" height="1045" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -541,7 +542,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5610278" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.023756906" sideWeight="0.48767418" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14861879" sideWeight="0.48767418" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2723757" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22983426" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24979983" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -786,7 +787,6 @@
         <state split_layout="FIRST">
           <first_editor relative-caret-position="921">
             <caret line="103" column="67" lean-forward="true" selection-start-line="103" selection-start-column="67" selection-end-line="103" selection-end-column="67" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -797,7 +797,6 @@
         <state split_layout="FIRST">
           <first_editor relative-caret-position="584">
             <caret line="506" column="3" lean-forward="true" selection-start-line="506" selection-start-column="3" selection-end-line="506" selection-end-column="3" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -806,8 +805,8 @@
     <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="345">
-            <caret line="180" column="14" lean-forward="true" selection-start-line="180" selection-start-column="14" selection-end-line="180" selection-end-column="14" />
+          <first_editor relative-caret-position="313">
+            <caret line="182" column="49" lean-forward="true" selection-start-line="182" selection-start-column="49" selection-end-line="182" selection-end-column="49" />
             <folding />
           </first_editor>
           <second_editor />
