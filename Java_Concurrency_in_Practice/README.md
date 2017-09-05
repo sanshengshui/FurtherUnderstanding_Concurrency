@@ -185,8 +185,21 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
         Read-Barrier指令。见下图
         这意味着，如果写入一个volatile变量a，可以保证：
         1、一个线程写入变量a后，任何线程访问该变量都会拿到最新值。
-        2、在写入变量a之前的写入操作，其更新的数据对于其他线程也是可见的。因为Memory Barrier会刷出cache中的所有先前的写入。    
-   
+        2、在写入变量a之前的写入操作，其更新的数据对于其他线程也是可见的。因为Memory Barrier会刷出cache中的所有先前的写入。
+happens-before
+        从jdk5开始，java使用新的JSR-133内存模型，基于happens-before的概念来阐述操作之间的内存可见性。
+        在JMM中，如果一个操作的执行结果需要对另一个操作可见，那么这两个操作之间必须要存在happens-before关系，这个的两个
+        操作既可以在同一个线程，也可以在不同的两个线程中。
+        与程序员密切相关的happens-before规则如下：
+        1、程序顺序规则：一个线程中的每个操作，happens-before于该线程中任意的后续操作。
+        2、监视器锁规则：对一个锁的解锁操作，happens-before于随后对这个锁的加锁操作。
+        3、volatile域规则：对一个volatile域的写操作，happens-before于任意线程后续对这个volatile域的读。
+        4、传递性规则：如果 A happens-before B，且 B happens-before C，那么A happens-before C。
+        注意：两个操作之间具有happens-before关系，并不意味前一个操作必须要在后一个操作之前执行！仅仅要求前一个操作的执行
+        结果，对于后一个操作是可见的，且前一个操作按顺序排在后一个操作之前。
+指令重排序
+        在执行程序时，为了提高性能，编译器和处理器会对指令做重排序。但是，JMM确保在不同的编译器和不同的处理器平台之上，
+        通过插入特定类型的Memory Barrier来禁止特定类型的编译器重排序和处理器重排序，为上层提供一致的内存可见性保证。
 ```
 <p align="center"><img src ="MemoryBarrier.png" alt="Memory Barrier(内存屏障)" /></p>
 <p align="center"><img src ="volatile.png" alt="volatile关键字" /></p>
