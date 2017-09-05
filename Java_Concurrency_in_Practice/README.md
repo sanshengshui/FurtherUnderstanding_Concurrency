@@ -165,26 +165,28 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 
 ### 深度剖析ConcurrentHashMap
 
-- Java内存模型
+ - Java内存模型
+    java并发采用的是共享内存模型，线程之间的通信对程序员来说是透明的，内存可见性问题很容易困扰着java程序员，今天我们<br/>
+    就来揭开java内存模型的神秘面纱。<br/>
+        <p align="center"><img src ="horizon.PNG" alt="分割线" /></p>
+    在揭开面纱之前，我们需要认识几个基础概念：内存屏障（memory Barriers），指令重排序，happens-before规则，as-if-serial语义。<br/>
+    
+**什么是Memory Barrier(内存屏障)?**
 ***
-        java并发采用的是共享内存模型，线程之间的通信对程序员来说是透明的，内存可见性问题很容易困扰着java程序员，今天我们
-        就来揭开java内存模型的神秘面纱。
-        在揭开面纱之前，我们需要认识几个基础概念：内存屏障（memory Barriers），指令重排序，happens-before规则，
-        as-if-serial语义。
-什么是Memory Barrier(内存屏障)?
         内存屏障，又称内存栅栏，是一个CPU指令，基本上它是一条这样的指令：
         1、保证特定操作的执行顺序。
         2、影响某些数据（或则是某条指令的执行结果）的内存可见性。
-        编译器和CPU能够重排序指令，保证最终相同的结果，尝试优化性能。插入一条Memory Barrier会告诉编译器和CPU：不管什么指令
-        都不能和这条Memory Barrier指令重排序。
-        Memory Barrier所做的另外一件事是强制刷出各种CPU cache，如一个 Write-Barrier（写入屏障）将刷出所有在 Barrier 之前
-        写入 cache 的数据，因此，任何CPU上的线程都能读取到这些数据的最新版本。见下图
-        这和java有什么关系？volatile是基于Memory Barrier实现的。
-        如果一个变量是volatile修饰的，JMM会在写入这个字段之后插进一个Write-Barrier指令，并在读这个字段之前插入一个
-        Read-Barrier指令。见下图
-        这意味着，如果写入一个volatile变量a，可以保证：
-        1、一个线程写入变量a后，任何线程访问该变量都会拿到最新值。
-        2、在写入变量a之前的写入操作，其更新的数据对于其他线程也是可见的。因为Memory Barrier会刷出cache中的所有先前的写入。
+编译器和CPU能够重排序指令，保证最终相同的结果，尝试优化性能。插入一条Memory Barrier会告诉编译器和CPU：不管什么指令<br/>
+都不能和这条Memory Barrier指令重排序。<br/>
+    Memory Barrier所做的另外一件事是强制刷出各种CPU cache，如一个 Write-Barrier（写入屏障）将刷出所有在 Barrier 之前<br/>
+    写入 cache 的数据，因此，任何CPU上的线程都能读取到这些数据的最新版本。<br/>
+    <p align="center"><img src ="MemoryBarrier.png" alt="Memory Barrier(内存屏障)" /></p>
+    这和java有什么关系？volatile是基于Memory Barrier实现的。
+    如果一个变量是volatile修饰的，JMM会在写入这个字段之后插进一个Write-Barrier指令，并在读这个字段之前插入一个
+    Read-Barrier指令。见下图
+    这意味着，如果写入一个volatile变量a，可以保证：
+    1、一个线程写入变量a后，任何线程访问该变量都会拿到最新值。
+    2、在写入变量a之前的写入操作，其更新的数据对于其他线程也是可见的。因为Memory Barrier会刷出cache中的所有先前的写入。
 happens-before
         从jdk5开始，java使用新的JSR-133内存模型，基于happens-before的概念来阐述操作之间的内存可见性。
         在JMM中，如果一个操作的执行结果需要对另一个操作可见，那么这两个操作之间必须要存在happens-before关系，这个的两个
@@ -216,7 +218,7 @@ as-if-serial
         1、线程A把本地内存中更新过的共享变量刷新到主内存中。
         2、线程B到主内存中读取线程A之前更新过的共享变量。
 
-<p align="center"><img src ="MemoryBarrier.png" alt="Memory Barrier(内存屏障)" /></p>
+
 <p align="center"><img src ="volatile.png" alt="volatile关键字" /></p>
 
 - Java中的Unsafe
