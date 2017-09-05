@@ -231,16 +231,16 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 
 
 
-- Java中的Unsafe
+2. <font size="3" color="green"><b>Java中的Unsafe</b></font><br/>
 ```
 前言
     Java最初被设计为一种安全的受控环境。尽管如此，HotSpot还是包含了一个后门sun.misc.Unsafe，提供了一些可以直接操控内存和
 线程的底层操作。Unsafe被JDK广泛应用于java.nio和并发包等实现中，这个不安全的类提供了一个观察HotSpot JVM内部结构并且可以对
 其进行修改，但是不建议在生产环境中使用。
 ```
-- Java中的CAS
-- 深入浅出Java同步器
-- 深入浅出ReentrantLock
+3. <font size="3" color="green"><b>Java中的CAS</b></font><br/> 
+4. <font size="3" color="green"><b>深入浅出Java同步器</b></font><br/> 
+5. <font size="3" color="green"><b>深入浅出ReentrantLock</b></font><br/> 
 
 ```
     HashMap是非线程安全的，HashTable是线程安全的。

@@ -35,8 +35,8 @@
         <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="-282">
-                <caret line="199" column="34" lean-forward="false" selection-start-line="199" selection-start-column="34" selection-end-line="199" selection-end-column="34" />
+              <first_editor relative-caret-position="630">
+                <caret line="244" column="3" lean-forward="true" selection-start-line="244" selection-start-column="3" selection-end-line="244" selection-end-column="3" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -101,8 +101,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="498" />
-    <option name="y" value="45" />
+    <option name="x" value="241" />
+    <option name="y" value="41" />
     <option name="width" value="1874" />
     <option name="height" value="1045" />
   </component>
@@ -519,15 +519,15 @@
       <workItem from="1504488531583" duration="1442000" />
       <workItem from="1504490065257" duration="9249000" />
       <workItem from="1504516847120" duration="4990000" />
-      <workItem from="1504570864462" duration="10298000" />
+      <workItem from="1504570864462" duration="10545000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="218718000" />
+    <option name="totallyTimeSpent" value="218965000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="498" y="45" width="1874" height="1045" extended-state="0" />
+    <frame x="241" y="41" width="1874" height="1045" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -805,8 +805,8 @@
     <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="-282">
-            <caret line="199" column="34" lean-forward="false" selection-start-line="199" selection-start-column="34" selection-end-line="199" selection-end-column="34" />
+          <first_editor relative-caret-position="630">
+            <caret line="244" column="3" lean-forward="true" selection-start-line="244" selection-start-column="3" selection-end-line="244" selection-end-column="3" />
             <folding />
           </first_editor>
           <second_editor />
