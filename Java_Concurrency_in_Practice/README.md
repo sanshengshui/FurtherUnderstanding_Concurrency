@@ -165,7 +165,7 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 
 ### 深度剖析ConcurrentHashMap
 
- - Java内存模型<br/>
+ 1. <font size="3" color="green"><b>Java内存模型</b></font><br/>
     java并发采用的是共享内存模型，线程之间的通信对程序员来说是透明的，内存可见性问题很容易困扰着java程序员，今天我们<br/>
     就来揭开java内存模型的神秘面纱。<br/>
         <p align="center"><img src ="horizon.PNG" alt="分割线" /></p>
