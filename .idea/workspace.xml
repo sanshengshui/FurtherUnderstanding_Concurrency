@@ -35,8 +35,8 @@
         <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="66">
-                <caret line="178" column="53" lean-forward="false" selection-start-line="178" selection-start-column="53" selection-end-line="178" selection-end-column="53" />
+              <first_editor relative-caret-position="294">
+                <caret line="205" column="13" lean-forward="false" selection-start-line="205" selection-start-column="13" selection-end-line="205" selection-end-column="13" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -100,9 +100,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="432" />
-    <option name="y" value="-11" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="533" />
+    <option name="y" value="6" />
     <option name="width" value="1874" />
     <option name="height" value="1045" />
   </component>
@@ -519,15 +519,15 @@
       <workItem from="1504488531583" duration="1442000" />
       <workItem from="1504490065257" duration="9249000" />
       <workItem from="1504516847120" duration="4990000" />
-      <workItem from="1504570864462" duration="2992000" />
+      <workItem from="1504570864462" duration="4003000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211412000" />
+    <option name="totallyTimeSpent" value="212423000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="533" y="6" width="1874" height="1045" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -542,7 +542,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5610278" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0878453" sideWeight="0.48767418" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.061325967" sideWeight="0.48767418" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2723757" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22983426" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24979983" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -805,8 +805,8 @@
     <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="66">
-            <caret line="178" column="53" lean-forward="false" selection-start-line="178" selection-start-column="53" selection-end-line="178" selection-end-column="53" />
+          <first_editor relative-caret-position="294">
+            <caret line="205" column="13" lean-forward="false" selection-start-line="205" selection-start-column="13" selection-end-line="205" selection-end-column="13" />
             <folding />
           </first_editor>
           <second_editor />
