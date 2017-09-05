@@ -171,7 +171,7 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
         <p align="center"><img src ="horizon.PNG" alt="分割线" /></p>
     在揭开面纱之前，我们需要认识几个基础概念：内存屏障（memory Barriers），指令重排序，happens-before规则，as-if-serial语义。<br/>
     
-**什么是Memory Barrier(内存屏障)?**
+<font size=4>什么是Memory Barrier(内存屏障)</font><br/>
 ***
         内存屏障，又称内存栅栏，是一个CPU指令，基本上它是一条这样的指令：
         1、保证特定操作的执行顺序。
