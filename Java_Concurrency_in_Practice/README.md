@@ -166,9 +166,9 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 ### 深度剖析ConcurrentHashMap
 
 - Java内存模型
+***
         java并发采用的是共享内存模型，线程之间的通信对程序员来说是透明的，内存可见性问题很容易困扰着java程序员，今天我们
         就来揭开java内存模型的神秘面纱。
-        ***
         在揭开面纱之前，我们需要认识几个基础概念：内存屏障（memory Barriers），指令重排序，happens-before规则，
         as-if-serial语义。
 什么是Memory Barrier(内存屏障)?
