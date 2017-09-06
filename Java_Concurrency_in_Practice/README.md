@@ -242,12 +242,13 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 ```
 3. <font size="3" color="green"><b>Java中的CAS</b></font><br/> 
 <font size=4><b>前言</b></font><br/>
-    CAS，Compare and Swap即比较并替换，设计并发算法时常用到的一种技术，Doug lea大神在java同步器中大量使用了CAS技术，鬼斧<br/>
-    神工的实现了多线程执行的安全性。<br/>
-    目前的处理器基本都支持CAS，只不过不同的厂家的实现不一样罢了。CAS有三个操作数：内存值V、旧的预期值A、要修改的值B，当且<br/>
-    仅当预期值A和内存值V相同时，将内存值修改为B并返回true，否则什么都不做并返回false。<br/>
+    CAS，Compare and Swap即比较并替换，设计并发算法时常用到的一种技术，Doug lea大神在java同步器中大量使用了CAS技术，<br/>
+    鬼斧神工的实现了多线程执行的安全性。<br/>
+    目前的处理器基本都支持CAS，只不过不同的厂家的实现不一样罢了。CAS有三个操作数：内存值V、旧的预期值A、要<br/>
+    修改的值B，当且仅当预期值A和内存值V相同时，将内存值修改为B并返回true，否则什么都不做并返回false。<br/>
 <font size=4><b>实现分析</b></font><br/>
     先看一段代码<br/>
+    <br/>
 ```java
    public int a = 1;
    public boolean compareAndSwapInt(int b){
@@ -258,9 +259,55 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
        return false;
    }
 ```    
+<br/>
+试想这段代码在多线程并发下，会发生什么？我们不妨来分析一下：
+    1.线程A执行到 a==1，正准备执行a = b时，线程B也正在运行a = b，并在线程A之前把a修改为2；最后线程A又把a修改成<br/>
+    了3。结果就是两个线程同时修改了变量a，显然这种结果是无法符合预期的，无法确定a的值。<br/>
+    2.解决方法也很简单，在compareAndSwapInt方法加锁同步，变成一个原子操作，同一时刻只有一个线程才能修改变量a。<br/>
+    <br/>
+    CAS中的比较和替换是一组原子操作，不会被外部打断，先根据paramLong/paramLong1获取到内存当中当前的内存值V，<br/>
+    在将内存值V和原值A作比较，要是相等就修改为要修改的值B，属于硬件级别的操作，效率比加锁操作高。<br/>
+    <br/>
+    java.util.concurrent.atomic包下的原子操作类都是基于CAS实现的，接下去我们通过AtomicInteger来看看是如何<br/>
+    通过CAS实现原子操作的：<br/>
+    <br/>
+```
+ 
+```java
+    public class AtomicInteger extends Number implements java.io.Serializable{
+    //setup to use Unsafe.compareAndSwapInt for updates
+    private static final sun.misc.Unsafe unsafe = sun.misc.Unsafe.getUnsafe();
+    private static final long valueOffset;
+    static {
+        try{
+            valueOffset = unsafe.objectFieldOffset(AtomicInteger.class.getDeclaredField("value"));
+        }catch (Exception ex){
+            throw new Error(ex);
+        }
+         }
+        private volatile  int value;
+        public final int get(){
+            return  value;
+        }
+    }
+   
+    
+```
+<br/>
+    1.Unsafe是CAS的核心类，Java无法直接访问底层操作系统，而是通过本地（native）方法来访问。不过尽管如此，<br/>
+    JVM还是开了一个后门，JDK中有一个类Unsafe，它提供了硬件级别的原子操作。<br/>
+    2.valueOffset表示的是变量值在内存中的偏移地址，因为Unsafe就是根据内存偏移地址获取数据的原值的。<br/>
+    3.value是用volatile修饰的，保证了多线程之间看到的value值是同一份。<br/>
+
+
+   
+  
+    
+
 
 4. <font size="3" color="green"><b>深入浅出Java同步器</b></font><br/> 
 5. <font size="3" color="green"><b>深入浅出ReentrantLock</b></font><br/> 
+
 
 ```
     HashMap是非线程安全的，HashTable是线程安全的。

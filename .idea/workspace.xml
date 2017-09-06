@@ -34,10 +34,16 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="649">
-                <caret line="260" column="0" lean-forward="true" selection-start-line="260" selection-start-column="0" selection-end-line="260" selection-end-column="0" />
-                <folding />
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="235">
+                <caret line="287" column="36" lean-forward="true" selection-start-line="287" selection-start-column="36" selection-end-line="287" selection-end-column="36" />
+                <folding>
+                  <marker date="1504668927237" expanded="true" signature="9767:9965" ph="{...}" />
+                  <marker date="1504668927237" expanded="true" signature="9767:10011" ph="{...}" />
+                  <marker date="1504668927237" expanded="true" signature="9767:10077" ph="{}" />
+                  <marker date="1504668927237" expanded="true" signature="10033:10047" ph=" { " />
+                  <marker date="1504668927237" expanded="true" signature="10061:10071" ph=" }" />
+                </folding>
               </first_editor>
               <second_editor />
             </state>
@@ -101,8 +107,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="283" />
-    <option name="y" value="63" />
+    <option name="x" value="610" />
+    <option name="y" value="7" />
     <option name="width" value="1874" />
     <option name="height" value="1026" />
   </component>
@@ -520,15 +526,15 @@
       <workItem from="1504490065257" duration="9249000" />
       <workItem from="1504516847120" duration="4990000" />
       <workItem from="1504570864462" duration="13174000" />
-      <workItem from="1504590566988" duration="6062000" />
+      <workItem from="1504590566988" duration="9167000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227656000" />
+    <option name="totallyTimeSpent" value="230761000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="283" y="63" width="1874" height="1026" extended-state="0" />
+    <frame x="610" y="7" width="1874" height="1026" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -543,7 +549,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5610278" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07513812" sideWeight="0.48767418" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.05635359" sideWeight="0.48767418" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2723757" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22983426" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24979983" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -805,10 +811,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="649">
-            <caret line="260" column="0" lean-forward="true" selection-start-line="260" selection-start-column="0" selection-end-line="260" selection-end-column="0" />
-            <folding />
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="235">
+            <caret line="287" column="36" lean-forward="true" selection-start-line="287" selection-start-column="36" selection-end-line="287" selection-end-column="36" />
+            <folding>
+              <marker date="1504668927237" expanded="true" signature="9767:9965" ph="{...}" />
+              <marker date="1504668927237" expanded="true" signature="9767:10011" ph="{...}" />
+              <marker date="1504668927237" expanded="true" signature="9767:10077" ph="{}" />
+              <marker date="1504668927237" expanded="true" signature="10033:10047" ph=" { " />
+              <marker date="1504668927237" expanded="true" signature="10061:10071" ph=" }" />
+            </folding>
           </first_editor>
           <second_editor />
         </state>
