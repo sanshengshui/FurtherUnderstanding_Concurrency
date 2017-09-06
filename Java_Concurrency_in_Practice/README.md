@@ -217,6 +217,8 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 <font size=5><b>as-if-serial</b></font><br/>
     不管怎么重排序，单线程下的执行结果不能被改变，编译器、runtime和处理器都必须遵守as-if-serial语义。<br/>
     <br/>
+    
+    
 <font size=4><b>抽象结构</b></font><br/> 
 *** 
         java线程之间的通信由java内存模型（JMM）控制，JMM决定一个线程对共享变量（实例域、静态域和数组）的写入何时对其它
@@ -239,6 +241,24 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 其进行修改，但是不建议在生产环境中使用。
 ```
 3. <font size="3" color="green"><b>Java中的CAS</b></font><br/> 
+<font size=4><b>前言</b></font><br/>
+    CAS，Compare and Swap即比较并替换，设计并发算法时常用到的一种技术，Doug lea大神在java同步器中大量使用了CAS技术，鬼斧<br/>
+    神工的实现了多线程执行的安全性。<br/>
+    目前的处理器基本都支持CAS，只不过不同的厂家的实现不一样罢了。CAS有三个操作数：内存值V、旧的预期值A、要修改的值B，当且<br/>
+    仅当预期值A和内存值V相同时，将内存值修改为B并返回true，否则什么都不做并返回false。<br/>
+<font size=4><b>实现分析</b></font><br/>
+    先看一段代码<br/>
+```java
+   public int a = 1;
+   public boolean compareAndSwapInt(int b){
+       if(a == 1){
+           a = b;
+           return true;
+       }
+       return false;
+   }
+```    
+
 4. <font size="3" color="green"><b>深入浅出Java同步器</b></font><br/> 
 5. <font size="3" color="green"><b>深入浅出ReentrantLock</b></font><br/> 
 
