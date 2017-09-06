@@ -298,6 +298,48 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
     JVM还是开了一个后门，JDK中有一个类Unsafe，它提供了硬件级别的原子操作。<br/>
     2.valueOffset表示的是变量值在内存中的偏移地址，因为Unsafe就是根据内存偏移地址获取数据的原值的。<br/>
     3.value是用volatile修饰的，保证了多线程之间看到的value值是同一份。<br/>
+    接下来，我们看看AtomicInteger是如何实现并发下的累加操作:
+<br/>
+
+```java
+public class AtomicInteger{
+    public final int getAndAdd(int delta){
+        return unsafe.getAndAddInt(this,valueOffset,delta);
+    }
+    public final int getAndAddInt(Object var1,long var2,int var4){
+        int var5;
+        do{
+            var5 = this.getIntVolatile(var1,var2);
+        }while (!this.compareAndSwapInt(var1,var2,var5 + var4));
+        return var5;
+    }
+}
+
+```
+    
+<br/>
+    在jdk1.8中,比较和替换操作放在unsafe类中实现。
+    <br/>
+    假设现在线程A和线程B同时执行getAndAdd操作:<br/>
+    <br/>
+    1.AtomicInteger里面的value原始值为3，即主内存中AtomicInteger的value为3，根据Java内存模型，线程A和线程B<br/>
+    各自持有一份value的副本，值为3。<br/>
+    <br/>
+    2.线程A通过getIntVolatile(var1, var2)方法获取到value值3，线程切换，线程A挂起。<br/>
+    <br/>
+    3.线程B通过getIntVolatile(var1, var2)方法获取到value值3，并利用compareAndSwapInt方法比较内存值也为3,<br/>
+    比较成功，修改内存值为2，线程切换，线程B挂起。<br/>
+    <br/>
+    4.线程A恢复，利用compareAndSwapInt方法比较，发手里的值3和内存值4不一致，此时value正在被另外一个线程修改，<br/>
+    线程A不能修改value值。<br/>
+    <br/>
+    5.线程的compareAndSwapInt实现，循环判断，重新获取value值，因为value是volatile变量，所以线程对它的修改，<br/>
+    线程A总是能够看到。线程A继续利用compareAndSwapInt进行比较并替换，直到compareAndSwapInt修改成功返回true。<br/>
+    <br/>
+    <br/>
+    整个过程中，利用CAS保证了对于value的修改的线程安全性。
+<hr/> 
+    
 
 
    
