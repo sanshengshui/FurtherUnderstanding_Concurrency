@@ -35,20 +35,21 @@
         <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="307">
-                <caret line="340" column="5" lean-forward="false" selection-start-line="340" selection-start-column="5" selection-end-line="340" selection-end-column="5" />
+              <first_editor relative-caret-position="-206">
+                <caret line="291" column="26" lean-forward="true" selection-start-line="291" selection-start-column="26" selection-end-line="291" selection-end-column="26" />
                 <folding>
-                  <marker date="1504676077443" expanded="true" signature="9767:9965" ph="{...}" />
-                  <marker date="1504676077443" expanded="true" signature="9767:10011" ph="{...}" />
-                  <marker date="1504676077443" expanded="true" signature="9767:10077" ph="{}" />
-                  <marker date="1504676077443" expanded="true" signature="10033:10047" ph=" { " />
-                  <marker date="1504676077443" expanded="true" signature="10061:10071" ph=" }" />
-                  <marker date="1504676077443" expanded="true" signature="10463:10473" ph=" { " />
-                  <marker date="1504676077443" expanded="true" signature="10463:10530" ph="{}" />
-                  <marker date="1504676077443" expanded="true" signature="10524:10530" ph=" }" />
-                  <marker date="1504676077443" expanded="true" signature="10596:10606" ph=" { " />
-                  <marker date="1504676077443" expanded="true" signature="10596:10770" ph="{...}" />
-                  <marker date="1504676077443" expanded="true" signature="10764:10770" ph=" }" />
+                  <marker date="1504677424530" expanded="true" signature="8893:8990" ph="{...}" />
+                  <marker date="1504677424530" expanded="true" signature="9791:9989" ph="{...}" />
+                  <marker date="1504677424530" expanded="true" signature="9791:10035" ph="{...}" />
+                  <marker date="1504677424530" expanded="true" signature="9791:10101" ph="{}" />
+                  <marker date="1504677424530" expanded="true" signature="10057:10071" ph=" { " />
+                  <marker date="1504677424530" expanded="true" signature="10085:10095" ph=" }" />
+                  <marker date="1504677424530" expanded="true" signature="10487:10497" ph=" { " />
+                  <marker date="1504677424530" expanded="true" signature="10487:10554" ph="{}" />
+                  <marker date="1504677424530" expanded="true" signature="10548:10554" ph=" }" />
+                  <marker date="1504677424530" expanded="true" signature="10620:10630" ph=" { " />
+                  <marker date="1504677424530" expanded="true" signature="10620:10794" ph="{...}" />
+                  <marker date="1504677424530" expanded="true" signature="10788:10794" ph=" }" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -113,8 +114,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="819" />
-    <option name="y" value="19" />
+    <option name="x" value="677" />
+    <option name="y" value="29" />
     <option name="width" value="1874" />
     <option name="height" value="1026" />
   </component>
@@ -533,15 +534,15 @@
       <workItem from="1504516847120" duration="4990000" />
       <workItem from="1504570864462" duration="13174000" />
       <workItem from="1504590566988" duration="9249000" />
-      <workItem from="1504674262791" duration="1799000" />
+      <workItem from="1504674262791" duration="3137000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232642000" />
+    <option name="totallyTimeSpent" value="233980000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="819" y="19" width="1874" height="1026" extended-state="0" />
+    <frame x="677" y="29" width="1874" height="1026" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -819,20 +820,21 @@
     <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="307">
-            <caret line="340" column="5" lean-forward="false" selection-start-line="340" selection-start-column="5" selection-end-line="340" selection-end-column="5" />
+          <first_editor relative-caret-position="-206">
+            <caret line="291" column="26" lean-forward="true" selection-start-line="291" selection-start-column="26" selection-end-line="291" selection-end-column="26" />
             <folding>
-              <marker date="1504676077443" expanded="true" signature="9767:9965" ph="{...}" />
-              <marker date="1504676077443" expanded="true" signature="9767:10011" ph="{...}" />
-              <marker date="1504676077443" expanded="true" signature="9767:10077" ph="{}" />
-              <marker date="1504676077443" expanded="true" signature="10033:10047" ph=" { " />
-              <marker date="1504676077443" expanded="true" signature="10061:10071" ph=" }" />
-              <marker date="1504676077443" expanded="true" signature="10463:10473" ph=" { " />
-              <marker date="1504676077443" expanded="true" signature="10463:10530" ph="{}" />
-              <marker date="1504676077443" expanded="true" signature="10524:10530" ph=" }" />
-              <marker date="1504676077443" expanded="true" signature="10596:10606" ph=" { " />
-              <marker date="1504676077443" expanded="true" signature="10596:10770" ph="{...}" />
-              <marker date="1504676077443" expanded="true" signature="10764:10770" ph=" }" />
+              <marker date="1504677424530" expanded="true" signature="8893:8990" ph="{...}" />
+              <marker date="1504677424530" expanded="true" signature="9791:9989" ph="{...}" />
+              <marker date="1504677424530" expanded="true" signature="9791:10035" ph="{...}" />
+              <marker date="1504677424530" expanded="true" signature="9791:10101" ph="{}" />
+              <marker date="1504677424530" expanded="true" signature="10057:10071" ph=" { " />
+              <marker date="1504677424530" expanded="true" signature="10085:10095" ph=" }" />
+              <marker date="1504677424530" expanded="true" signature="10487:10497" ph=" { " />
+              <marker date="1504677424530" expanded="true" signature="10487:10554" ph="{}" />
+              <marker date="1504677424530" expanded="true" signature="10548:10554" ph=" }" />
+              <marker date="1504677424530" expanded="true" signature="10620:10630" ph=" { " />
+              <marker date="1504677424530" expanded="true" signature="10620:10794" ph="{...}" />
+              <marker date="1504677424530" expanded="true" signature="10788:10794" ph=" }" />
             </folding>
           </first_editor>
           <second_editor />

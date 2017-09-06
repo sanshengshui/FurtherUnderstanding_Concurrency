@@ -250,6 +250,7 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
     先看一段代码<br/>
     <br/>
 ```java
+public class Test{
    public int a = 1;
    public boolean compareAndSwapInt(int b){
        if(a == 1){
@@ -257,6 +258,7 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
            return true;
        }
        return false;
+   }
    }
 ```    
 <br/>
@@ -337,8 +339,55 @@ public class AtomicInteger{
     线程A总是能够看到。线程A继续利用compareAndSwapInt进行比较并替换，直到compareAndSwapInt修改成功返回true。<br/>
     <br/>
     <br/>
-    整个过程中，利用CAS保证了对于value的修改的线程安全性。
+    整个过程中，利用CAS保证了对于value的修改的线程安全性。<br/>
 <hr/> 
+    我们继续深入看看Unsafe类中的compareAndSwapInt方法。<br/>
+    
+```
+public final native boolean compareAndSwapInt(Object paramObject, long paramLong, int paramInt1, int paramInt2);
+```  
+   <br/>
+    可以看到，这是一个本地方法调用，这个本地方法在openjdk中依次调用c++代码：unsafe.cpp，atomic.cpp，<br/>
+    atomic_window_x86.inline.hpp。下面是对应于intel X86处理器的源代码片段。<br/>
+```
+
+```
+inline jint Atomic::cmpxchg (jint exchange_value, volatile jint* dest, jint compare_value) {
+    int mp = os::isMP(); //判断是否是多处理器
+    _asm {
+        mov edx, dest
+        mov ecx, exchange_value
+        mov eax, compare_value
+        LOCK_IF_MP(mp)
+        cmpxchg dword ptr [edx], ecx
+    }
+}
+
+``` 
+<br/>
+    从上面的源码中可以看出，会根据当前处理器类型来决定是否为cmpxchg指令添加lock前缀。<br/>
+    <br/>
+   1.如果是多处理器，为cmpxchg指令添加lock前缀。<br/>
+    2.反之，就省略lock前缀。（单处理器会不需要lock前缀提供的内存屏障效果）<br/>
+    intel手册对lock前缀的说明如下：<br/>
+    <br/>
+    1.确保对内存读改写操作的原子执行。<br/>
+    在Pentium及之前的处理器中，带有lock前缀的指令在执行期间会锁住总线，使得其它处理器暂时无法通过<br/>
+    总线访问内存，很显然，这个开销很大。在新的处理器中，Intel使用缓存锁定来保证指令执行的原子性。<br/>
+    缓存锁定将大大降低lock前缀指令的执行开销。<br/>
+    <br/>
+    2.禁止该指令，与前面和后面的读写指令重排序。<br/>
+    <br/>
+    3.把写缓冲区的所有数据刷新到内存中。<br/>
+    <br/>
+    上面的第2点和第3点所具有的内存屏障效果，保证了CAS同时具有volatile读和volatile写的内存语义。<br/>
+ <font size=4><b>CAS缺点</b></font><br/>
+    CAS存在一个很明显的问题，即ABA问题。<br/>
+    如果变量V初次读取的时候是A，并且在准备赋值的时候检查到它仍然是A，那能说明它的值没有被其他线程<br/>
+    修改过了吗？如果在这段期间它的值曾经被改成了B，然后又改回A，那CAS操作就会误认为它从来没有被修改过。<br/>
+    针对这种情况，java并发包中提供了一个带有标记的原子引用类"AtomicStampedReference"，它可以通过控制变量值<br/>
+    的版本来保证CAS的正确性。<br/>
+    
     
 
 
