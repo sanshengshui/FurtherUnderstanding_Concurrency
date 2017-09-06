@@ -166,10 +166,11 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 ### 深度剖析ConcurrentHashMap
 
  1. <font size="3" color="green"><b>Java内存模型</b></font><br/>
-    java并发采用的是共享内存模型，线程之间的通信对程序员来说是透明的，内存可见性问题很容易困扰着java程序员，今天我们<br/>
-    就来揭开java内存模型的神秘面纱。<br/>
+    java并发采用的是共享内存模型，线程之间的通信对程序员来说是透明的，内存可见性问题很容易困扰着java程序员，<br/>
+    今天我们就来揭开java内存模型的神秘面纱。<br/>
         <p align="center"><img src ="horizon.PNG" alt="分割线" /></p>
-    在揭开面纱之前，我们需要认识几个基础概念：内存屏障（memory Barriers），指令重排序，happens-before规则，as-if-serial语义。<br/>
+    在揭开面纱之前，我们需要认识几个基础概念：内存屏障（memory Barriers），指令重排序，happens-before规则，<br/>
+    as-if-serial语义。<br/>
     
 <font size=4><b>什么是Memory Barrier(内存屏障)</b></font><br/>
 ***
@@ -177,8 +178,8 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
         1、保证特定操作的执行顺序。
         2、影响某些数据（或则是某条指令的执行结果）的内存可见性。
         
-   编译器和CPU能够重排序指令，保证最终相同的结果，尝试优化性能。插入一条Memory Barrier会告诉编译器和CPU：不管什么指令<br/>
-    都不能和这条Memory Barrier指令重排序。<br/>
+   编译器和CPU能够重排序指令，保证最终相同的结果，尝试优化性能。插入一条Memory Barrier会告诉编译器和CPU：不管<br/>
+   什么指令都不能和这条Memory Barrier指令重排序。<br/>
     Memory Barrier所做的另外一件事是强制刷出各种CPU cache，如一个 Write-Barrier（写入屏障）将刷出所有在 Barrier 之前<br/>
     写入 cache 的数据，因此，任何CPU上的线程都能读取到这些数据的最新版本。<br/>
     <p align="center"><img src ="MemoryBarrier.png" alt="Memory Barrier(内存屏障)" /></p>
@@ -192,16 +193,16 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 <font size=4><b>happens-before</b></font><br/>
 ***
         从jdk5开始，java使用新的JSR-133内存模型，基于happens-before的概念来阐述操作之间的内存可见性。
-   在JMM中，如果一个操作的执行结果需要对另一个操作可见，那么这两个操作之间必须要存在happens-before关系，这个的两个<br/>
-    操作既可以在同一个线程，也可以在不同的两个线程中。<br/>
+   在JMM中，如果一个操作的执行结果需要对另一个操作可见，那么这两个操作之间必须要存在happens-before关系，<br/>
+   这个的两个操作既可以在同一个线程，也可以在不同的两个线程中。<br/>
     <br/>
     与程序员密切相关的happens-before规则如下：<br/>
     1、程序顺序规则：一个线程中的每个操作，happens-before于该线程中任意的后续操作。<br/>
     2、监视器锁规则：对一个锁的解锁操作，happens-before于随后对这个锁的加锁操作。<br/>
     3、volatile域规则：对一个volatile域的写操作，happens-before于任意线程后续对这个volatile域的读。<br/>
     4、传递性规则：如果 A happens-before B，且 B happens-before C，那么A happens-before C。<br/>
-    注意：两个操作之间具有happens-before关系，并不意味前一个操作必须要在后一个操作之前执行！仅仅要求前一个操作的执行<br/>
-    结果，对于后一个操作是可见的，且前一个操作按顺序排在后一个操作之前。<br/>
+    注意：两个操作之间具有happens-before关系，并不意味前一个操作必须要在后一个操作之前执行！仅仅要求前一个操作<br/>
+    的执行结果，对于后一个操作是可见的，且前一个操作按顺序排在后一个操作之前。<br/>
 <font size=4><b>指令重排序</b></font><br/>
 ***
         在执行程序时，为了提高性能，编译器和处理器会对指令做重排序。但是，JMM确保在不同的编译器和不同的处理器平台之上，
@@ -223,8 +224,8 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 *** 
         java线程之间的通信由java内存模型（JMM）控制，JMM决定一个线程对共享变量（实例域、静态域和数组）的写入何时对其它
         线程可见。
-   从抽象的角度来看，JMM定义了线程和主内存Main Memory（堆内存）之间的抽象关系：线程之间的共享变量存储在主内存中，<br/>
-   每个线程都有自己的本地内存Local Memory（只是一个抽象概念，物理上不存在），存储了该线程的共享变量副本。<br/> 
+   从抽象的角度来看，JMM定义了线程和主内存Main Memory（堆内存）之间的抽象关系：线程之间的共享变量存储在主<br/>
+   内存中，每个线程都有自己的本地内存Local Memory（只是一个抽象概念，物理上不存在），存储了该线程的共享变量副本。<br/> 
    <br/>  
    所以，线程A和线程B之前需要通信的话，必须经过一下两个步骤：<br/>
    1、线程A把本地内存中更新过的共享变量刷新到主内存中。<br/>
@@ -242,8 +243,8 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 ```
 3. <font size="3" color="green"><b>Java中的CAS</b></font><br/> 
 <font size=4><b>前言</b></font><br/>
-    CAS，Compare and Swap即比较并替换，设计并发算法时常用到的一种技术，Doug lea大神在java同步器中大量使用了CAS技术，<br/>
-    鬼斧神工的实现了多线程执行的安全性。<br/>
+    CAS，Compare and Swap即比较并替换，设计并发算法时常用到的一种技术，Doug lea大神在java同步器中大量使用了<br/>
+    CAS技术鬼斧神工的实现了多线程执行的安全性。<br/>
     目前的处理器基本都支持CAS，只不过不同的厂家的实现不一样罢了。CAS有三个操作数：内存值V、旧的预期值A、要<br/>
     修改的值B，当且仅当预期值A和内存值V相同时，将内存值修改为B并返回true，否则什么都不做并返回false。<br/>
 <font size=4><b>实现分析</b></font><br/>
@@ -262,9 +263,9 @@ public class Test{
    }
 ```    
 <br/>
-试想这段代码在多线程并发下，会发生什么？我们不妨来分析一下：
-    1.线程A执行到 a==1，正准备执行a = b时，线程B也正在运行a = b，并在线程A之前把a修改为2；最后线程A又把a修改成<br/>
-    了3。结果就是两个线程同时修改了变量a，显然这种结果是无法符合预期的，无法确定a的值。<br/>
+试想这段代码在多线程并发下，会发生什么？我们不妨来分析一下：<br/>
+    1.线程A执行到 a==1，正准备执行a = b时，线程B也正在运行a = b，并在线程A之前把a修改为2；最后线程A又把a<br/>
+    修改成了3。结果就是两个线程同时修改了变量a，显然这种结果是无法符合预期的，无法确定a的值。<br/>
     2.解决方法也很简单，在compareAndSwapInt方法加锁同步，变成一个原子操作，同一时刻只有一个线程才能修改变量a。<br/>
     <br/>
     CAS中的比较和替换是一组原子操作，不会被外部打断，先根据paramLong/paramLong1获取到内存当中当前的内存值V，<br/>
