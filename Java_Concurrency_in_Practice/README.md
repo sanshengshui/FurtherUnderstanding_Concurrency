@@ -233,7 +233,7 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 
 
 
-
+<hr/>
 2. <font size="3" color="green"><b>Java中的Unsafe</b></font><br/>
 ```
 前言
@@ -241,6 +241,7 @@ ThreadLocal的弱引用访问到Entry的value值，然后remove它，防止内�
 线程的底层操作。Unsafe被JDK广泛应用于java.nio和并发包等实现中，这个不安全的类提供了一个观察HotSpot JVM内部结构并且可以对
 其进行修改，但是不建议在生产环境中使用。
 ```
+<hr/>
 3. <font size="3" color="green"><b>Java中的CAS</b></font><br/> 
 <font size=4><b>前言</b></font><br/>
     CAS，Compare and Swap即比较并替换，设计并发算法时常用到的一种技术，Doug lea大神在java同步器中大量使用了<br/>
@@ -389,8 +390,9 @@ inline jint Atomic::cmpxchg (jint exchange_value, volatile jint* dest, jint comp
     针对这种情况，java并发包中提供了一个带有标记的原子引用类"AtomicStampedReference"，它可以通过控制变量值<br/>
     的版本来保证CAS的正确性。<br/>
     
-  
+  <hr/>
 4. <font size="3" color="green"><b>深入浅出Java同步器AQS</b></font><br/> 
+<br/>
 <font size=4><b>前言</b></font><br/>
     在java.util.concurrent.locks包中有很多Lock的实现类，常用的有ReentrantLock、ReadWriteLock<br/>
     （实现类ReentrantReadWriteLock），内部实现都依赖AbstractQueuedSynchronizer类，接下去让我们看看<br/>
