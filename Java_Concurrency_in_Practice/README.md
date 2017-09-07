@@ -389,15 +389,15 @@ inline jint Atomic::cmpxchg (jint exchange_value, volatile jint* dest, jint comp
     针对这种情况，java并发包中提供了一个带有标记的原子引用类"AtomicStampedReference"，它可以通过控制变量值<br/>
     的版本来保证CAS的正确性。<br/>
     
-    
-
-
-   
   
-    
+4. <font size="3" color="green"><b>深入浅出Java同步器AQS</b></font><br/> 
+<font size=4><b>前言</b></font><br/>
+    在java.util.concurrent.locks包中有很多Lock的实现类，常用的有ReentrantLock、ReadWriteLock<br/>
+    （实现类ReentrantReadWriteLock），内部实现都依赖AbstractQueuedSynchronizer类，接下去让我们看看<br/>
+    Doug Lea大神是如何使用一个普通类就完成了代码块的并发访问控制。为了方便，本文中使用AQS代替<br/>
+    AbstractQueuedSynchronizer。<br/>
 
 
-4. <font size="3" color="green"><b>深入浅出Java同步器</b></font><br/> 
 5. <font size="3" color="green"><b>深入浅出ReentrantLock</b></font><br/> 
 
 
