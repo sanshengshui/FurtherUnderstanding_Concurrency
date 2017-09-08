@@ -398,6 +398,58 @@ inline jint Atomic::cmpxchg (jint exchange_value, volatile jint* dest, jint comp
     （实现类ReentrantReadWriteLock），内部实现都依赖AbstractQueuedSynchronizer类，接下去让我们看看<br/>
     Doug Lea大神是如何使用一个普通类就完成了代码块的并发访问控制。为了方便，本文中使用AQS代替<br/>
     AbstractQueuedSynchronizer。<br/>
+<font size=4><b>定义</b></font><br/>
+
+```java 
+    public abstract class AbstractQueuedSynchronizer extends 
+    java.JCIP.java.util.concurrent.locks.AbstractOwnableSynchronizer implements java.io.Serializable{
+    //等待队列的头节点
+    private transient volatile org.w3c.dom.Node head;
+    //等待队列的尾节点
+    private transient volatile org.w3c.dom.Node tail;
+    //同步状态
+    private volatile int state;
+    protected  final int getState(){
+        return state;
+    }
+    protected final void setState(int newState){
+        state = newState;
+    }
+    }
+
+```
+<br/>
+    队列同步器AQS是用来构建锁或其他同步组件的基础框架，内部使用一个int成员变量表示同步状态，通过内置的<br/>
+    FIFO队列来完成资源获取线程的排队工作，其中内部状态state，等待队列的头节点head和尾节点head，都是通过<br/>
+    volatile修饰，保证了多线程之间的可见。<br/>
+    <br/>
+    在深入实现原理之前，我们先看看内部的FIFO队列是如何实现的。
+    <br/>
+ ```
+ 
+ ```java
+ static final class Node{
+   static final Node SHARED = new Node();
+           static final Node EXCLUSIVE = null;
+           static final int CANCELLED =  1;
+           static final int SIGNAL    = -1;
+           static final int CONDITION = -2;
+           static final int PROPAGATE = -3;
+           volatile int waitStatus;
+           volatile Node prev;
+           volatile Node next;
+           volatile Thread thread;
+           Node nextWaiter;
+ } 
+ 
+ ```
+ <br/>
+    先来一张形象的图(该图其实是网上找的)<br/>
+    <p align="center"><img src ="FIFO.png" alt="FIFO图片" /></p>
+    
+ 
+    
+
 
 
 5. <font size="3" color="green"><b>深入浅出ReentrantLock</b></font><br/> 
