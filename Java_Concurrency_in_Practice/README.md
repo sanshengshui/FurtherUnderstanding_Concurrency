@@ -445,6 +445,32 @@ inline jint Atomic::cmpxchg (jint exchange_value, volatile jint* dest, jint comp
  <br/>
     先来一张形象的图(该图其实是网上找的)<br/>
     <p align="center"><img src ="FIFO.png" alt="FIFO图片" /></p>
+  <br/>
+  黄色节点是默认head节点，其实是一个空节点，我觉得可以理解成代表当前持有锁的线程，每当有线程竞争失败，都是插入到<br/>
+  队列的尾节点，tail节点始终指向队列中的最后一个元素。<br/>
+  <br/>
+  每个节点中， 除了存储了当前线程，前后节点的引用以外，还有一个waitStatus变量，用于描述节点当前的状态。多线程并发<br/>
+  执行时，队列中会有多个节点存在，这个waitStatus其实代表对应线程的状态：有的线程可能获取锁因为某些原因放弃竞争；<br/>
+  有的线程在等待满足条件，满足之后才能执行等等。一共有4中状态：<br/>
+  <br/>
+  CANCELLED 取消状态<br/>
+  SIGNAL 等待触发状态<br/>
+  CONDITION 等待条件状态<br/>
+  PROPAGATE 状态需要向后传播<br/>
+  等待队列是FIFO先进先出，只有前一个节点的状态为SIGNAL时，当前节点的线程才能被挂起。<br/>
+  <br/>
+  <font size=4><b>实现原理</b></font><br/>
+  子类重写tryAcquire和tryRelease方法通过CAS指令修改状态变量state。<br/>
+  
+   ```
+   public final void acquire(int arg) {   
+    if (!tryAcquire(arg) && acquireQueued(addWaiter(Node.EXCLUSIVE), arg))    
+       selfInterrupt();
+   }
+   ```
+   <br/>
+    <font size=4><b>线程获取锁过程</b></font><br/>
+  
     
  
     

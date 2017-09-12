@@ -31,45 +31,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="8436">
-                <caret line="444" column="6" lean-forward="false" selection-start-line="444" selection-start-column="6" selection-end-line="444" selection-end-column="6" />
+              <first_editor relative-caret-position="421">
+                <caret line="470" column="8" lean-forward="true" selection-start-line="470" selection-start-column="8" selection-end-line="470" selection-end-column="8" />
                 <folding>
-                  <marker date="1504862348559" expanded="true" signature="8911:9008" ph="{...}" />
-                  <marker date="1504862348559" expanded="true" signature="9814:10012" ph="{...}" />
-                  <marker date="1504862348559" expanded="true" signature="9814:10058" ph="{...}" />
-                  <marker date="1504862348559" expanded="true" signature="9814:10124" ph="{}" />
-                  <marker date="1504862348559" expanded="true" signature="10080:10094" ph=" { " />
-                  <marker date="1504862348559" expanded="true" signature="10108:10118" ph=" }" />
-                  <marker date="1504862348559" expanded="true" signature="10510:10520" ph=" { " />
-                  <marker date="1504862348559" expanded="true" signature="10510:10577" ph="{}" />
-                  <marker date="1504862348559" expanded="true" signature="10571:10577" ph=" }" />
-                  <marker date="1504862348559" expanded="true" signature="10643:10653" ph=" { " />
-                  <marker date="1504862348559" expanded="true" signature="10643:10817" ph="{...}" />
-                  <marker date="1504862348559" expanded="true" signature="10811:10817" ph=" }" />
-                  <marker date="1504862348559" expanded="true" signature="13863:13873" ph=" { " />
-                  <marker date="1504862348559" expanded="true" signature="13886:13892" ph=" }" />
-                  <marker date="1504862348559" expanded="true" signature="13940:13950" ph=" { " />
-                  <marker date="1504862348559" expanded="true" signature="13967:13973" ph=" }" />
+                  <marker date="1505218921915" expanded="true" signature="8911:9008" ph="{...}" />
+                  <marker date="1505218921915" expanded="true" signature="9814:10012" ph="{...}" />
+                  <marker date="1505218921915" expanded="true" signature="9814:10058" ph="{...}" />
+                  <marker date="1505218921915" expanded="true" signature="9814:10124" ph="{}" />
+                  <marker date="1505218921915" expanded="true" signature="10080:10094" ph=" { " />
+                  <marker date="1505218921915" expanded="true" signature="10108:10118" ph=" }" />
+                  <marker date="1505218921915" expanded="true" signature="10510:10520" ph=" { " />
+                  <marker date="1505218921915" expanded="true" signature="10510:10577" ph="{}" />
+                  <marker date="1505218921915" expanded="true" signature="10571:10577" ph=" }" />
+                  <marker date="1505218921915" expanded="true" signature="10643:10653" ph=" { " />
+                  <marker date="1505218921915" expanded="true" signature="10643:10817" ph="{...}" />
+                  <marker date="1505218921915" expanded="true" signature="10811:10817" ph=" }" />
+                  <marker date="1505218921915" expanded="true" signature="13863:13873" ph=" { " />
+                  <marker date="1505218921915" expanded="true" signature="13886:13892" ph=" }" />
+                  <marker date="1505218921915" expanded="true" signature="13940:13950" ph=" { " />
+                  <marker date="1505218921915" expanded="true" signature="13967:13973" ph=" }" />
                 </folding>
               </first_editor>
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AtomicBoolean.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/java/JCIP/java/util/concurrent/atomic/AtomicBoolean.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="143" column="6" lean-forward="true" selection-start-line="143" selection-start-column="6" selection-end-line="143" selection-end-column="6" />
-              <folding>
-                <element signature="e#3250#3251#0" expanded="true" />
-                <element signature="e#3290#3291#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -119,8 +106,8 @@
         <option value="$PROJECT_DIR$/src/java/JCIP/test/TestThreadLocal.java" />
         <option value="$PROJECT_DIR$/src/java/JCIP/README.md" />
         <option value="$PROJECT_DIR$/src/java/JCIP/ConcurrentHashMap/Test.java" />
-        <option value="$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md" />
         <option value="$PROJECT_DIR$/src/java/JCIP/java/util/concurrent/atomic/AtomicBoolean.java" />
+        <option value="$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md" />
       </list>
     </option>
   </component>
@@ -137,9 +124,9 @@
     </treeState>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="191" />
-    <option name="y" value="-25" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="255" />
+    <option name="y" value="20" />
     <option name="width" value="1874" />
     <option name="height" value="1017" />
   </component>
@@ -158,6 +145,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -179,10 +170,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -542,14 +529,15 @@
       <workItem from="1504832710183" duration="16007000" />
       <workItem from="1504925486665" duration="1239000" />
       <workItem from="1505092540438" duration="16029000" />
+      <workItem from="1505217831713" duration="1097000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="296729000" />
+    <option name="totallyTimeSpent" value="297826000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="255" y="20" width="1874" height="1017" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -564,7 +552,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5610278" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09281768" sideWeight="0.48767418" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17071824" sideWeight="0.48767418" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2723757" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22983426" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24979983" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -644,7 +632,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="file://$PROJECT_DIR$/src/java/Chapter01/ThreadNotSafe.java" />
     <entry file="file://$PROJECT_DIR$/src/java/Chapter01/ThreadSafe/ThreadSafeCounter.java" />
@@ -845,42 +832,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="8436">
-            <caret line="444" column="6" lean-forward="false" selection-start-line="444" selection-start-column="6" selection-end-line="444" selection-end-column="6" />
-            <folding>
-              <marker date="1504862348559" expanded="true" signature="8911:9008" ph="{...}" />
-              <marker date="1504862348559" expanded="true" signature="9814:10012" ph="{...}" />
-              <marker date="1504862348559" expanded="true" signature="9814:10058" ph="{...}" />
-              <marker date="1504862348559" expanded="true" signature="9814:10124" ph="{}" />
-              <marker date="1504862348559" expanded="true" signature="10080:10094" ph=" { " />
-              <marker date="1504862348559" expanded="true" signature="10108:10118" ph=" }" />
-              <marker date="1504862348559" expanded="true" signature="10510:10520" ph=" { " />
-              <marker date="1504862348559" expanded="true" signature="10510:10577" ph="{}" />
-              <marker date="1504862348559" expanded="true" signature="10571:10577" ph=" }" />
-              <marker date="1504862348559" expanded="true" signature="10643:10653" ph=" { " />
-              <marker date="1504862348559" expanded="true" signature="10643:10817" ph="{...}" />
-              <marker date="1504862348559" expanded="true" signature="10811:10817" ph=" }" />
-              <marker date="1504862348559" expanded="true" signature="13863:13873" ph=" { " />
-              <marker date="1504862348559" expanded="true" signature="13886:13892" ph=" }" />
-              <marker date="1504862348559" expanded="true" signature="13940:13950" ph=" { " />
-              <marker date="1504862348559" expanded="true" signature="13967:13973" ph=" }" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
+    <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/volatile.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/JCIP/java/util/concurrent/atomic/AtomicBoolean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="402">
-          <caret line="143" column="6" lean-forward="true" selection-start-line="143" selection-start-column="6" selection-end-line="143" selection-end-column="6" />
-          <folding>
-            <element signature="e#3250#3251#0" expanded="true" />
-            <element signature="e#3290#3291#0" expanded="true" />
-          </folding>
+          <caret line="143" column="6" lean-forward="false" selection-start-line="143" selection-start-column="6" selection-end-line="143" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java_Concurrency_in_Practice/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="421">
+            <caret line="470" column="8" lean-forward="true" selection-start-line="470" selection-start-column="8" selection-end-line="470" selection-end-column="8" />
+            <folding>
+              <marker date="1505218921915" expanded="true" signature="8911:9008" ph="{...}" />
+              <marker date="1505218921915" expanded="true" signature="9814:10012" ph="{...}" />
+              <marker date="1505218921915" expanded="true" signature="9814:10058" ph="{...}" />
+              <marker date="1505218921915" expanded="true" signature="9814:10124" ph="{}" />
+              <marker date="1505218921915" expanded="true" signature="10080:10094" ph=" { " />
+              <marker date="1505218921915" expanded="true" signature="10108:10118" ph=" }" />
+              <marker date="1505218921915" expanded="true" signature="10510:10520" ph=" { " />
+              <marker date="1505218921915" expanded="true" signature="10510:10577" ph="{}" />
+              <marker date="1505218921915" expanded="true" signature="10571:10577" ph=" }" />
+              <marker date="1505218921915" expanded="true" signature="10643:10653" ph=" { " />
+              <marker date="1505218921915" expanded="true" signature="10643:10817" ph="{...}" />
+              <marker date="1505218921915" expanded="true" signature="10811:10817" ph=" }" />
+              <marker date="1505218921915" expanded="true" signature="13863:13873" ph=" { " />
+              <marker date="1505218921915" expanded="true" signature="13886:13892" ph=" }" />
+              <marker date="1505218921915" expanded="true" signature="13940:13950" ph=" { " />
+              <marker date="1505218921915" expanded="true" signature="13967:13973" ph=" }" />
+            </folding>
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
