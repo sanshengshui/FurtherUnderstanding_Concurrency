@@ -469,12 +469,12 @@ inline jint Atomic::cmpxchg (jint exchange_value, volatile jint* dest, jint comp
    }
    ```
    <br/>
-    <font size=4><b>线程获取锁过程</b></font><br/>
+    <font size=5><b>线程获取锁过程</b></font><br/>
   下列步骤中线程A和B进行竞争。<br/>
   <br/>
-  1.线程A执行CAS执行成功，state值被修改并返回true，线程A继续执行。<br/>
-  2.线程A执行CAS指令失败，说明线程B也在执行CAS指令且成功，这种情况下线程A会执行步骤3。<br/>
-  3.生成新Node节点node，并通过CAS指令插入到等待队列的队尾（同一时刻可能会有多个Node节点插入到等待队列中），如果<br/>
+  1. 线程A执行CAS执行成功，state值被修改并返回true，线程A继续执行。<br/>
+  2. 线程A执行CAS指令失败，说明线程B也在执行CAS指令且成功，这种情况下线程A会执行步骤3。<br/>
+  3. 生成新Node节点node，并通过CAS指令插入到等待队列的队尾（同一时刻可能会有多个Node节点插入到等待队列中），如果<br/>
   tail节点为空，则将head节点指向一个空节点（代表线程B），具体实现如下：<br/>
   
    ```
@@ -509,6 +509,119 @@ inline jint Atomic::cmpxchg (jint exchange_value, volatile jint* dest, jint comp
    }
    ```
    <br/>
+   4. node插入到队尾后，该线程不会立马挂起，会进行自旋操作。因为在node的插入过程，线程B（即之前没有阻塞的线程<br/>
+   可能已经执行完成，所以要判断该node的前一个节点pred是否为head节点（代表线程B），如果pred == head，表明当前<br/>
+   节点是队列中第一个“有效的”节点，因此再次尝试tryAcquire获取锁，<br/>
+   1. 如果成功获取到锁，表明线程B已经执行完成，线程A不需要挂起。<br/>
+   2. 如果获取失败，表示线程B还未完成，至少还未修改state值。进行步骤5。<br/>
+     
+    ```
+    final boolean acquireQueued(final Node node, int arg) {
+     boolean failed = true;
+     try {
+         boolean interrupted = false;
+         for (;;) {
+             final Node p = node.predecessor();
+             if (p == head && tryAcquire(arg)) {
+                 setHead(node);
+                 p.next = null; // help GC
+                 failed = false;
+                 return interrupted;
+             }
+             if (shouldParkAfterFailedAcquire(p, node) &&
+                 parkAndCheckInterrupt())
+                 interrupted = true;
+         }
+     } finally {
+         if (failed)
+             cancelAcquire(node);
+     }
+    }
+    ```
+   <br/>
+   5. 前面我们已经说过只有前一个节点pred的线程状态为SIGNAL时，当前节点的线程才能被挂起。<br/>
+   1. 如果pred的waitStatus == 0，则通过CAS指令修改waitStatus为Node.SIGNAL。<br/>
+   2. 如果pred的waitStatus > 0，表明pred的线程状态CANCELLED，需从队列中删除。<br/>
+   3. 如果pred的waitStatus为Node.SIGNAL，则通过LockSupport.park()方法把线程A挂起，并等待被唤醒，被唤醒后进入步骤6。<br/>
+   具体实现如下：<br/>
+   
+    ```
+    private static boolean shouldParkAfterFailedAcquire(Node pred, Node node) {
+     int ws = pred.waitStatus;
+     if (ws == Node.SIGNAL)
+         /*
+          * This node has already set status asking a release
+          * to signal it, so it can safely park.
+          */
+         return true;
+     if (ws > 0) {
+         /*
+          * Predecessor was cancelled. Skip over predecessors and
+          * indicate retry.
+          */
+         do {
+             node.prev = pred = pred.prev;
+         } while (pred.waitStatus > 0);
+         pred.next = node;
+     } else {
+         /*
+          * waitStatus must be 0 or PROPAGATE.  Indicate that we
+          * need a signal, but don't park yet.  Caller will need to
+          * retry to make sure it cannot acquire before parking.
+          */
+         compareAndSetWaitStatus(pred, ws, Node.SIGNAL);
+     }
+     return false;
+    }
+    ```
+   <br/>
+  6.线程每次被唤醒时，都要进行中断检测，如果发现当前线程被中断，那么抛出InterruptedException并退出循环。从无限<br/>
+  循环的代码可以看出，并不是被唤醒的线程一定能获得锁，必须调用tryAccquire重新竞争，因为锁是非公平的，有可能被新<br/>
+  加入的线程获得，从而导致刚被唤醒的线程再次被阻塞，这个细节充分体现了“非公平”的精髓。<br/>
+  <br/>
+  <br/>
+  <hr/>
+  线程释放锁过程：<br/>
+  <br/>
+  1. 如果头结点head的waitStatus值为-1，则用CAS指令重置为0；<br/>
+  2. 找到waitStatus值小于0的节点s，通过LockSupport.unpark(s.thread)唤醒线程。<br/>
+  <br/>
+  
+  ```
+  private void unparkSuccessor(Node node) {
+   /*
+    * If status is negative (i.e., possibly needing signal) try
+    * to clear in anticipation of signalling.  It is OK if this
+    * fails or if status is changed by waiting thread.
+    */
+   int ws = node.waitStatus;
+   if (ws < 0)
+       compareAndSetWaitStatus(node, ws, 0);
+  
+   /*
+    * Thread to unpark is held in successor, which is normally
+    * just the next node.  But if cancelled or apparently null,
+    * traverse backwards from tail to find the actual
+    * non-cancelled successor.
+    */
+   Node s = node.next;
+   if (s == null || s.waitStatus > 0) {
+       s = null;
+       for (Node t = tail; t != null && t != node; t = t.prev)
+           if (t.waitStatus <= 0)
+               s = t;
+   }
+   if (s != null)
+       LockSupport.unpark(s.thread);
+  }
+
+  ```
+  
+   
+   
+   
+   
+  
    
   
     
