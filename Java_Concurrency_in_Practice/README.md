@@ -441,7 +441,6 @@ inline jint Atomic::cmpxchg (jint exchange_value, volatile jint* dest, jint comp
            volatile Thread thread;
            Node nextWaiter;
  } 
- 
  ```
  <br/>
     先来一张形象的图(该图其实是网上找的)<br/>
