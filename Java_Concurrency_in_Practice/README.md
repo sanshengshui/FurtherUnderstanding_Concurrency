@@ -453,10 +453,10 @@ inline jint Atomic::cmpxchg (jint exchange_value, volatile jint* dest, jint comp
   执行时，队列中会有多个节点存在，这个waitStatus其实代表对应线程的状态：有的线程可能获取锁因为某些原因放弃竞争；<br/>
   有的线程在等待满足条件，满足之后才能执行等等。一共有4中状态：<br/>
   <br/>
-  CANCELLED 取消状态<br/>
-  SIGNAL 等待触发状态<br/>
-  CONDITION 等待条件状态<br/>
-  PROPAGATE 状态需要向后传播<br/>
+  1.CANCELLED 取消状态<br/>
+  2.SIGNAL 等待触发状态<br/>
+  3.CONDITION 等待条件状态<br/>
+  4.PROPAGATE 状态需要向后传播<br/>
   等待队列是FIFO先进先出，只有前一个节点的状态为SIGNAL时，当前节点的线程才能被挂起。<br/>
   <br/>
   <font size=4><b>实现原理</b></font><br/>
@@ -470,6 +470,46 @@ inline jint Atomic::cmpxchg (jint exchange_value, volatile jint* dest, jint comp
    ```
    <br/>
     <font size=4><b>线程获取锁过程</b></font><br/>
+  下列步骤中线程A和B进行竞争。<br/>
+  <br/>
+  1.线程A执行CAS执行成功，state值被修改并返回true，线程A继续执行。<br/>
+  2.线程A执行CAS指令失败，说明线程B也在执行CAS指令且成功，这种情况下线程A会执行步骤3。<br/>
+  3.生成新Node节点node，并通过CAS指令插入到等待队列的队尾（同一时刻可能会有多个Node节点插入到等待队列中），如果<br/>
+  tail节点为空，则将head节点指向一个空节点（代表线程B），具体实现如下：<br/>
+  
+   ```
+   private Node addWaiter(Node mode) {
+    Node node = new Node(Thread.currentThread(), mode);
+    // Try the fast path of enq; backup to full enq on failure
+    Node pred = tail;
+    if (pred != null) {
+        node.prev = pred;
+        if (compareAndSetTail(pred, node)) {
+            pred.next = node;
+            return node;
+        }
+    }
+    enq(node);
+    return node;
+   }
+   private Node enq(final Node node) {
+    for (;;) {
+        Node t = tail;
+        if (t == null) { // Must initialize
+            if (compareAndSetHead(new Node()))
+                tail = head;
+        } else {
+            node.prev = t;
+            if (compareAndSetTail(t, node)) {
+                t.next = node;
+                return t;
+            }
+        }
+    }
+   }
+   ```
+   <br/>
+   
   
     
  
