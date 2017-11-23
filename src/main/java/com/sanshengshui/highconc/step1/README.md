@@ -1,1 +1,1 @@
-[![High Concurrence](Java_Concurrency_in_Practice/HighConcurrence.JPG)
+[!High Concurrence](Java_Concurrency_in_Practice/HighConcurrence.JPG)
