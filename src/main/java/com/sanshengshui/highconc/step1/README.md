@@ -1,1 +1,0 @@
-<p align="center"><img src ="Java_Concurrency_in_Practice/HighConcurrency.JPG" alt="JPS logo" /></p>

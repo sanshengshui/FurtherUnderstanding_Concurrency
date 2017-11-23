@@ -11,6 +11,8 @@ JVM和多线程学习感想和日常记录 <br/>
 - Java 7 Concurrency Cookbook  
 - 深入理解Java虚拟机
 
+<p align="center"><img src ="Java_Concurrency_in_Practice/HighConcurrency.JPG" alt="JPS logo" /></p>
+
 # Java并发编程
 ## 源代码阅读
 ```
