@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="HighConcurrence:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="HighConcurrence.war">
+      <element id="artifact" artifact-name="HighConcurrence:war exploded" />
+    </root>
+  </artifact>
+</component>
